@@ -16,10 +16,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Samy Hajar | Full Stack Developer Portfolio",
-  description: "Full Stack Developer crafting exceptional digital experiences with modern technologies. View my projects and get in touch.",
-};
+import { GlobalSidebars } from "@/components/global-sidebars";
 
 export default function RootLayout({
   children,
@@ -42,6 +39,8 @@ export default function RootLayout({
             <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 opacity-20 blur-[100px]" />
             <div className="absolute right-0 top-0 -z-10 h-full w-full bg-gradient-to-b from-transparent via-cyan-100/30 to-transparent dark:via-neutral-900/10" />
           </div>
+
+          <GlobalSidebars />
 
           <SmoothScroll>
             <Navigation />
