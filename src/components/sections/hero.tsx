@@ -2,7 +2,8 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Github, Linkedin, Mail, ChevronDown } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import { SiGithub, SiLinkedin, SiInstagram } from "react-icons/si";
 import { motion, Variants } from "framer-motion";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -41,11 +42,6 @@ export function Hero() {
 
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-            {/* Background gradient */}
-            <div className="absolute inset-0 -z-10 h-full w-full bg-white dark:bg-neutral-950 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]">
-                <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-fuchsia-400 opacity-20 blur-[100px]" />
-                <div className="absolute right-0 top-0 -z-10 h-full w-full bg-gradient-to-b from-transparent via-cyan-100/30 to-transparent dark:via-neutral-900/10" />
-            </div>
 
             {/* Left Sidebar - Scroll Indicator */}
             <motion.div
@@ -68,17 +64,25 @@ export function Hero() {
                 </div>
             </motion.div>
 
-            {/* Right Sidebar - Follow Me */}
+            {/* Right Sidebar - Social Links */}
             <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.5, duration: 0.6 }}
-                className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-3"
+                className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col items-center gap-6"
             >
-                <span className="text-xs font-medium text-neutral-500 dark:text-neutral-500 tracking-[0.15em] [writing-mode:vertical-lr] rotate-180">
-                    Follow — Fb, Ig, Li, Tw
-                </span>
-                <div className="h-16 w-[1px] bg-gradient-to-b from-transparent via-neutral-300 dark:via-neutral-600 to-transparent" />
+                <div className="flex flex-col gap-6">
+                    <a href="https://github.com/samyhajar" target="_blank" rel="noopener noreferrer" className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors duration-300 transform hover:scale-110">
+                        <SiGithub size={24} />
+                    </a>
+                    <a href="https://linkedin.com/in/samyhajar" target="_blank" rel="noopener noreferrer" className="text-[#0077b5] transition-transform duration-300 transform hover:scale-110">
+                        <SiLinkedin size={24} />
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-[#E1306C] transition-transform duration-300 transform hover:scale-110">
+                        <SiInstagram size={24} />
+                    </a>
+                </div>
+                <div className="h-16 w-[1px] bg-gradient-to-b from-neutral-300 dark:from-neutral-600 to-transparent" />
             </motion.div>
 
             {/* Main Content */}
@@ -145,24 +149,7 @@ export function Hero() {
                 </motion.div>
             </motion.div>
 
-            {/* Bottom Right - Play Intro Button */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.6 }}
-                className="fixed bottom-12 right-12 z-50 hidden lg:block"
-            >
-                <Button
-                    variant="outline"
-                    size="lg"
-                    className="gap-3 rounded-full bg-white/80 dark:bg-neutral-900/80 backdrop-blur-sm border-neutral-300 dark:border-neutral-700 hover:scale-105 transition-transform"
-                >
-                    <div className="w-10 h-10 rounded-full bg-neutral-900 dark:bg-white flex items-center justify-center">
-                        <div className="w-0 h-0 border-t-[6px] border-t-transparent border-l-[10px] border-l-white dark:border-l-neutral-900 border-b-[6px] border-b-transparent ml-1" />
-                    </div>
-                    <span className="font-medium">Play Intro</span>
-                </Button>
-            </motion.div>
+
 
             {/* Scroll Down Indicator */}
             <motion.button

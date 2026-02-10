@@ -93,7 +93,7 @@ export function Navigation() {
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
-                        className="hidden md:flex items-center gap-1 bg-white/10 dark:bg-neutral-900/10 backdrop-blur-3xl rounded-full px-2 py-2 border border-white/20 dark:border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
+                        className="hidden md:flex items-center gap-1 bg-white/10 dark:bg-neutral-950/10 backdrop-blur-3xl rounded-full px-2 py-2 border border-white/20 dark:border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.37)]"
                     >
                         {links.map((link, index) => (
                             <motion.div

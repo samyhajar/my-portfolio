@@ -12,7 +12,7 @@ interface FeaturedProjectsProps {
 
 export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
     return (
-        <section id="projects" className="py-20 px-4 bg-white dark:bg-neutral-950 overflow-hidden">
+        <section id="projects" className="py-20 px-4 overflow-hidden">
             <div className="max-w-7xl mx-auto space-y-16">
                 {/* Header */}
                 <div className="text-center space-y-4">
