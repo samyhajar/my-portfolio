@@ -1,0 +1,280 @@
+"use client";
+
+import { useEffect, useRef, useMemo, useState, createContext, useContext } from "react";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { OrbitControls, Html, Sphere } from "@react-three/drei";
+import * as ONE from "three";
+import {
+    SiReact,
+    SiNextdotjs,
+    SiTypescript,
+    SiTailwindcss,
+    SiNodedotjs,
+    SiPython,
+    SiPostgresql,
+    SiSupabase,
+    SiPrisma,
+    SiGit,
+    SiDocker,
+    SiAwslambda,
+    SiFigma,
+    SiThreedotjs,
+    SiGraphql
+} from "react-icons/si";
+import { MorphingText } from "./text-morphing";
+
+// Tech stack data with official brand icons
+const TECH_STACK = [
+    { name: "React", icon: SiReact, color: "#61DAFB" },
+    { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+    { name: "Tailwind", icon: SiTailwindcss, color: "#38B2AC" },
+    { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+    { name: "Python", icon: SiPython, color: "#3776AB" },
+    { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
+    { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
+    { name: "Prisma", icon: SiPrisma, color: "#2D3748" },
+    { name: "Git", icon: SiGit, color: "#F05032" },
+    { name: "Docker", icon: SiDocker, color: "#2496ED" },
+    { name: "AWS", icon: SiAwslambda, color: "#FF9900" },
+    { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+    { name: "Three.js", icon: SiThreedotjs, color: "#000000" },
+    { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
+];
+
+import { projects } from "@/data/projects";
+
+// Context for sharing hover state between 3D and 2D components
+const HoverContext = createContext<{
+    hoveredTech: typeof TECH_STACK[number] | null;
+    setHoveredTech: (tech: typeof TECH_STACK[number] | null) => void;
+}>({
+    hoveredTech: null,
+    setHoveredTech: () => { },
+});
+
+function TechNode({ position, tech }: { position: [number, number, number], tech: typeof TECH_STACK[number] }) {
+    const Icon = tech.icon;
+    const { setHoveredTech } = useContext(HoverContext);
+
+    return (
+        <group position={position}>
+            <Html center distanceFactor={10} zIndexRange={[40, 0]}>
+                <div
+                    className="relative flex items-center justify-center cursor-pointer group"
+                    onMouseEnter={() => setHoveredTech(tech)}
+                    onMouseLeave={() => setHoveredTech(null)}
+                >
+                    {/* Icon */}
+                    <div className="p-2 rounded-full transition-all duration-300 group-hover:scale-125 group-hover:bg-white/10 group-hover:backdrop-blur-md">
+                        <Icon size={30} style={{ color: tech.color, filter: 'drop-shadow(0 0 8px rgba(255,255,255,0.3))' }} />
+                    </div>
+                </div>
+            </Html>
+        </group>
+    );
+}
+
+function TechSphere() {
+    const groupRef = useRef<ONE.Group>(null);
+    const { viewport } = useThree();
+
+    // Distribute points on a sphere using Fibonacci lattice
+    const nodes = useMemo(() => {
+        const points = [];
+        const phi = Math.PI * (3 - Math.sqrt(5)); // Golden angle
+
+        for (let i = 0; i < TECH_STACK.length; i++) {
+            const y = 1 - (i / (TECH_STACK.length - 1)) * 2;
+            const radius = Math.sqrt(1 - y * y);
+            const theta = phi * i;
+
+            const x = Math.cos(theta) * radius;
+            const z = Math.sin(theta) * radius;
+
+            points.push({
+                position: [x * 2.2, y * 2.2, z * 2.2] as [number, number, number],
+                tech: TECH_STACK[i]
+            });
+        }
+        return points;
+    }, []);
+
+    useFrame((state) => {
+        if (groupRef.current) {
+            // Auto rotation
+            groupRef.current.rotation.y += 0.003;
+
+            // Scroll influence (subtle)
+            const scrollOffset = window.scrollY;
+            groupRef.current.rotation.x = scrollOffset * 0.0005;
+        }
+    });
+
+    return (
+        <group ref={groupRef}>
+            {/* Wireframe Sphere */}
+            <Sphere args={[2.0, 32, 32]}>
+                <meshStandardMaterial
+                    color="#a855f7"
+                    wireframe
+                    transparent
+                    opacity={0.1}
+                />
+            </Sphere>
+
+            {/* Connection Lines (Optional visual flair) */}
+            <Sphere args={[2.1, 16, 16]}>
+                <meshStandardMaterial
+                    color="#3b82f6"
+                    wireframe
+                    transparent
+                    opacity={0.05}
+                />
+            </Sphere>
+
+            {/* Nodes */}
+            {nodes.map((node, i) => (
+                <TechNode key={i} position={node.position} tech={node.tech} />
+            ))}
+        </group>
+    );
+}
+
+function ProjectDisplay() {
+    const { hoveredTech } = useContext(HoverContext);
+
+    // Find projects that use the hovered tech
+    const relatedProjects = useMemo(() => {
+        if (!hoveredTech) return [];
+        return projects.filter(project =>
+            project.technologies.some(t =>
+                t.toLowerCase().includes(hoveredTech.name.toLowerCase()) ||
+                hoveredTech.name.toLowerCase().includes(t.toLowerCase())
+            )
+        );
+    }, [hoveredTech]);
+
+    const projectTitles = relatedProjects.map(p => p.title);
+
+    return (
+        <div className="flex flex-col items-start justify-center h-full px-8 lg:px-16 pointer-events-none">
+            {hoveredTech && relatedProjects.length > 0 ? (
+                <div className="space-y-6 animate-in fade-in slide-in-from-right-8 duration-500">
+                    {/* Tech Name */}
+                    <div className="space-y-2">
+                        <p className="text-sm font-bold tracking-widest text-neutral-500 uppercase">
+                            Technology
+                        </p>
+                        <h3
+                            className="text-5xl md:text-7xl font-bold tracking-tight"
+                            style={{ color: hoveredTech.color }}
+                        >
+                            {hoveredTech.name}
+                        </h3>
+                    </div>
+
+                    {/* Projects with Morphing Animation */}
+                    <div className="space-y-3">
+                        <p className="text-sm font-bold tracking-widest text-neutral-500 uppercase">
+                            Used in
+                        </p>
+                        <div className="text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-white">
+                            <MorphingText
+                                words={projectTitles}
+                                interval={2000}
+                                animationDuration={0.6}
+                                className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500"
+                            />
+                        </div>
+                        <p className="text-sm text-neutral-500">
+                            {relatedProjects.length} {relatedProjects.length === 1 ? 'project' : 'projects'}
+                        </p>
+                    </div>
+
+                    {/* Project Details */}
+                    <div className="space-y-2 max-w-md">
+                        {relatedProjects.slice(0, 3).map((project, idx) => (
+                            <div
+                                key={project.slug}
+                                className="flex items-start gap-3 p-3 rounded-lg bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm border border-neutral-200 dark:border-neutral-800"
+                                style={{
+                                    animationDelay: `${idx * 100}ms`,
+                                }}
+                            >
+                                <span
+                                    className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0"
+                                    style={{ backgroundColor: project.color || '#3b82f6' }}
+                                />
+                                <div>
+                                    <p className="font-medium text-neutral-900 dark:text-white">
+                                        {project.title}
+                                    </p>
+                                    <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2">
+                                        {project.description}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
+                        {relatedProjects.length > 3 && (
+                            <p className="text-sm text-neutral-500 italic pl-5">
+                                + {relatedProjects.length - 3} more projects
+                            </p>
+                        )}
+                    </div>
+                </div>
+            ) : (
+                <div className="space-y-4 text-center lg:text-left">
+                    <p className="text-lg text-neutral-500 dark:text-neutral-400">
+                        Hover over a technology icon to see projects
+                    </p>
+                </div>
+            )}
+        </div>
+    );
+}
+
+export function TechGlobe() {
+    const [hoveredTech, setHoveredTech] = useState<typeof TECH_STACK[number] | null>(null);
+
+    return (
+        <HoverContext.Provider value={{ hoveredTech, setHoveredTech }}>
+            <section id="skills" className="min-h-screen w-full bg-neutral-50 dark:bg-neutral-950 relative overflow-hidden">
+                {/* Section Header */}
+                <div className="absolute top-20 left-0 right-0 z-10 text-center space-y-4 px-4 pointer-events-none">
+                    <p className="text-sm font-bold tracking-widest text-neutral-500 uppercase">Tech Stack</p>
+                    <h2 className="text-6xl md:text-8xl font-bold tracking-tighter text-neutral-900 dark:text-white drop-shadow-sm">
+                        My <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 animate-gradient-x">Skills</span>
+                    </h2>
+                </div>
+
+                {/* Split Layout: Globe Left, Info Right */}
+                <div className="w-full h-screen flex flex-col lg:flex-row items-center justify-center gap-0 lg:gap-8 max-w-[1600px] mx-auto">
+                    {/* Left Side - Globe */}
+                    <div className="w-full lg:w-[45%] h-1/2 lg:h-full relative flex items-center justify-center">
+                        <div className="w-full h-full max-w-[600px]">
+                            <Canvas camera={{ position: [0, 0, 8], fov: 60 }} dpr={[1, 2]}>
+                                <ambientLight intensity={0.5} />
+                                <pointLight position={[10, 10, 10]} intensity={1} />
+                                <group position={[0, 0, 0]}>
+                                    <TechSphere />
+                                </group>
+                                <OrbitControls
+                                    enableZoom={false}
+                                    enablePan={false}
+                                    autoRotate={true}
+                                    autoRotateSpeed={0.5}
+                                />
+                            </Canvas>
+                        </div>
+                    </div>
+
+                    {/* Right Side - Project Info */}
+                    <div className="w-full lg:w-[55%] h-1/2 lg:h-full flex items-center justify-start">
+                        <ProjectDisplay />
+                    </div>
+                </div>
+            </section>
+        </HoverContext.Provider>
+    );
+}
