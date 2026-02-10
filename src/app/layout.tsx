@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SmoothScroll } from "@/components/smooth-scroll";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,10 +37,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Navigation />
-          <div className="pt-16">
-            {children}
-          </div>
+          <SmoothScroll>
+            <Navigation />
+            <div className="pt-16">
+              {children}
+            </div>
+          </SmoothScroll>
         </ThemeProvider>
       </body>
     </html>

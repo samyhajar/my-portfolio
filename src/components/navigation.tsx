@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { ThemeToggle } from "@/components/theme-toggle";
+import { useLenis } from "@/components/smooth-scroll";
 
 export function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
@@ -56,6 +56,8 @@ export function Navigation() {
         };
     }, []);
 
+    const lenis = useLenis();
+
     return (
         <motion.nav
             initial={{ y: -100 }}
@@ -76,9 +78,9 @@ export function Navigation() {
                                 <motion.div
                                     whileHover={{ rotate: 180 }}
                                     transition={{ duration: 0.3 }}
-                                    className="w-10 h-10 rounded-full bg-gradient-to-br from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400 flex items-center justify-center shadow-lg"
+                                    className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-gradient-to-br from-neutral-900 to-neutral-600 dark:from-neutral-100 dark:to-neutral-400 flex items-center justify-center shadow-lg"
                                 >
-                                    <span className="text-white dark:text-neutral-900 font-bold text-lg">
+                                    <span className="text-white dark:text-neutral-900 font-bold text-xl lg:text-2xl">
                                         SH
                                     </span>
                                 </motion.div>
@@ -103,7 +105,7 @@ export function Navigation() {
                             >
                                 <a
                                     href={link.href}
-                                    className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-200 block ${activeSection === link.id
+                                    className={`relative px-5 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium rounded-full transition-all duration-200 block ${activeSection === link.id
                                         ? "text-white"
                                         : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
                                         }`}
@@ -111,13 +113,7 @@ export function Navigation() {
                                         e.preventDefault();
                                         const element = document.getElementById(link.id);
                                         if (element) {
-                                            const offset = 80;
-                                            const elementPosition = element.getBoundingClientRect().top;
-                                            const offsetPosition = elementPosition + window.pageYOffset - offset;
-                                            window.scrollTo({
-                                                top: offsetPosition,
-                                                behavior: "smooth",
-                                            });
+                                            lenis?.scrollTo(`#${link.id}`, { offset: -80 });
                                         }
                                     }}
                                 >
@@ -144,20 +140,11 @@ export function Navigation() {
                     </motion.div>
 
                     <div className="flex items-center gap-4">
-                        {/* Theme Toggle */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5, delay: 0.25 }}
-                        >
-                            <ThemeToggle />
-                        </motion.div>
-
                         {/* CTA Button */}
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5, delay: 0.3 }}
+                            transition={{ duration: 0.5, delay: 0.25 }}
                             className="hidden md:block"
                         >
                             <Button
@@ -210,16 +197,7 @@ export function Navigation() {
                                 onClick={(e) => {
                                     e.preventDefault();
                                     setIsOpen(false);
-                                    const element = document.getElementById(link.id);
-                                    if (element) {
-                                        const offset = 80;
-                                        const elementPosition = element.getBoundingClientRect().top;
-                                        const offsetPosition = elementPosition + window.pageYOffset - offset;
-                                        window.scrollTo({
-                                            top: offsetPosition,
-                                            behavior: "smooth",
-                                        });
-                                    }
+                                    lenis?.scrollTo(`#${link.id}`, { offset: -80 });
                                 }}
                             >
                                 {link.label}

@@ -78,6 +78,7 @@ function TechNode({ position, tech }: { position: [number, number, number], tech
 function TechSphere() {
     const groupRef = useRef<ONE.Group>(null);
     const { viewport } = useThree();
+    const { hoveredTech } = useContext(HoverContext);
 
     // Distribute points on a sphere using Fibonacci lattice
     const nodes = useMemo(() => {
@@ -102,12 +103,16 @@ function TechSphere() {
 
     useFrame((state) => {
         if (groupRef.current) {
-            // Auto rotation
-            groupRef.current.rotation.y += 0.003;
+            // Auto rotation - pause when hovering over an icon
+            if (!hoveredTech) {
+                groupRef.current.rotation.y += 0.003;
+            }
 
-            // Scroll influence (subtle)
-            const scrollOffset = window.scrollY;
-            groupRef.current.rotation.x = scrollOffset * 0.0005;
+            // Scroll influence (subtle) - only when not hovering
+            if (!hoveredTech) {
+                const scrollOffset = window.scrollY;
+                groupRef.current.rotation.x = scrollOffset * 0.0005;
+            }
         }
     });
 
@@ -262,7 +267,7 @@ export function TechGlobe() {
                                 <OrbitControls
                                     enableZoom={false}
                                     enablePan={false}
-                                    autoRotate={true}
+                                    autoRotate={!hoveredTech}
                                     autoRotateSpeed={0.5}
                                 />
                             </Canvas>
