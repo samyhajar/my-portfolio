@@ -68,6 +68,9 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
     );
 }
 
+import { useEffect, useRef } from "react";
+import { useInView } from "framer-motion";
+
 function ProjectListItem({
     project,
     index,
@@ -79,8 +82,18 @@ function ProjectListItem({
     onHover: () => void;
     onLeave: () => void;
 }) {
+    const ref = useRef(null);
+    const isInView = useInView(ref, { amount: 0.5 });
+
+    useEffect(() => {
+        if (isInView) {
+            onHover();
+        }
+    }, [isInView, onHover]);
+
     return (
         <motion.div
+            ref={ref}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
