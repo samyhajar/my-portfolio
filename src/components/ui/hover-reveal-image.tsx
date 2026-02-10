@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
@@ -110,7 +110,9 @@ export function HoverRevealImage({ activeImage }: HoverRevealImageProps) {
             {/* Fallback or base color */}
             <div className="w-full h-full opacity-50">
                 <Canvas camera={{ position: [0, 0, 5] }}>
-                    <ImagePlane texturePath={activeImage} isActive={true} />
+                    <Suspense fallback={null}>
+                        <ImagePlane texturePath={activeImage} isActive={true} />
+                    </Suspense>
                 </Canvas>
             </div>
             {/* Overlay to dim the image so text pops */}
