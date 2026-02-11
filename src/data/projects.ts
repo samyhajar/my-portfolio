@@ -68,28 +68,28 @@ export const projects: Project[] = [
     color: "#22c55e" // green-500
   },
   {
-    slug: "lms-platform",
-    title: "Learning Management System",
-    description: "Modern LMS platform with course creation, student tracking, and assessments",
-    longDescription: "A comprehensive Learning Management System designed for modern education. Features include course creation tools, student progress tracking, interactive assessments, video streaming, and collaborative learning spaces.",
-    image: "/projects/lms-platform.png",
-    tags: ["Education", "Full Stack", "SaaS"],
-    github: "https://github.com/yourusername/lms-platform",
+    slug: "werkzeugkiste",
+    title: "Die digitale Werkzeugkiste",
+    description: "Advanced LMS for social inclusion with automated PDF certificate generation and progression tracking.",
+    longDescription: "A robust digital learning platform developed for 'arbeit plus'. It features automated module certificate creation using PDFKit, granular lesson progression tracking, interactive quizzes, and a comprehensive admin backend for dynamic module management. Built to empower job seekers through digital literacy.",
+    image: "/projects/werkzeugkiste.png",
+    tags: ["Education", "Next.js", "Supabase"],
+    demo: "https://werkzeugkiste.arbeitplus.at/",
     featured: true,
-    year: "2023",
-    role: "Lead Developer",
-    technologies: ["Next.js", "PostgreSQL", "Prisma", "Stripe", "AWS S3"],
+    year: "2024",
+    role: "Full Stack Developer",
+    technologies: ["Next.js", "Supabase", "PDFKit", "Tailwind CSS", "Docker", "TypeScript"],
     challenges: [
-      "Building a scalable video streaming infrastructure",
-      "Implementing complex role-based access control",
-      "Creating an intuitive course builder interface"
+      "Implementing real-time progress tracking across complex learning paths",
+      "Automating dynamic PDF generation for student certifications",
+      "Building a flexible admin system for modular content creation"
     ],
     outcomes: [
-      "Onboarded 50+ educational institutions",
-      "Facilitated learning for 5,000+ students",
-      "Achieved 99.9% uptime over 12 months"
+      "Successfully launched 7 learning modules with interactive assessments",
+      "Automated certification process for thousands of participants",
+      "Streamlined content management for educational administrators"
     ],
-    color: "#3b82f6" // blue-500
+    color: "#e11d48"
   },
   {
     slug: "mining-dashboard",
