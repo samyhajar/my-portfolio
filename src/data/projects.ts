@@ -28,7 +28,7 @@ export const projects: Project[] = [
     featured: true,
     year: "2024",
     role: "Full Stack Developer",
-    technologies: ["Next.js", "React", "Supabase", "Tailwind CSS", "Vercel", "Turbopack", "TypeScript"],
+    technologies: ["Next.js", "React", "Supabase", "Tailwind CSS", "Vercel", "Turbopack", "TypeScript", "GitHub", "Figma"],
     challenges: [
       "Managing complex internationalization (i18n) workflows for global resource distribution",
       "Implementing a tiered access system for different formation stages and regions",
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     featured: true,
     year: "2024",
     role: "Full Stack Developer",
-    technologies: ["Django", "Tailwind CSS", "Python", "PostgreSQL", "Docker"],
+    technologies: ["Django", "Tailwind CSS", "Python", "PostgreSQL", "Docker", "GitHub", "Figma"],
     challenges: [
       "Ensuring 100% compliance with German medical data privacy standards while maintaining accessibility",
       "Designing an intuitive mobile interface for a broad patient demographic (age 20-80+)",
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     featured: true,
     year: "2024",
     role: "Full Stack Developer",
-    technologies: ["Next.js", "Supabase", "PDFKit", "Tailwind CSS", "Docker", "TypeScript"],
+    technologies: ["Next.js", "Supabase", "PDFKit", "Tailwind CSS", "Docker", "TypeScript", "GitHub", "Figma"],
     challenges: [
       "Implementing real-time progress tracking across complex learning paths",
       "Automating dynamic PDF generation for student certifications",
@@ -117,7 +117,7 @@ export const projects: Project[] = [
     featured: false,
     year: "2024",
     role: "Full Stack Developer",
-    technologies: ["Next.js", "OpenAI API", "Supabase", "Tailwind CSS", "TypeScript"],
+    technologies: ["Next.js", "OpenAI API", "Supabase", "Tailwind CSS", "TypeScript", "Flutter", "Swift", "GitHub", "Figma"],
     challenges: [
       "Implementing efficient AI prompt engineering for consistent recipe quality",
       "Designing a scalable database schema for recipe storage and user preferences",
@@ -140,7 +140,7 @@ export const projects: Project[] = [
     featured: false,
     year: "2023",
     role: "Full Stack Developer",
-    technologies: ["React", "Node.js", "MQTT", "InfluxDB", "Grafana"],
+    technologies: ["React", "Node.js", "MQTT", "InfluxDB", "Grafana", "GitHub", "Tailwind CSS", "Figma"],
     challenges: [
       "Processing high-frequency sensor data from 100+ devices",
       "Ensuring system reliability in harsh industrial environments",

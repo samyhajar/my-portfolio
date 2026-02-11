@@ -20,7 +20,10 @@ import {
     SiAwslambda,
     SiFigma,
     SiThreedotjs,
-    SiGraphql
+    SiGraphql,
+    SiGithub,
+    SiFlutter,
+    SiSwift
 } from "react-icons/si";
 import { MorphingText } from "./text-morphing";
 
@@ -29,18 +32,16 @@ const TECH_STACK = [
     { name: "React", icon: SiReact, color: "#61DAFB" },
     { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
     { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-    { name: "Tailwind", icon: SiTailwindcss, color: "#38B2AC" },
+    { name: "Tailwind CSS", icon: SiTailwindcss, color: "#38B2AC" },
     { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
     { name: "Python", icon: SiPython, color: "#3776AB" },
     { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
     { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
-    { name: "Prisma", icon: SiPrisma, color: "#2D3748" },
-    { name: "Git", icon: SiGit, color: "#F05032" },
+    { name: "GitHub", icon: SiGithub, color: "#181717" },
     { name: "Docker", icon: SiDocker, color: "#2496ED" },
-    { name: "AWS", icon: SiAwslambda, color: "#FF9900" },
     { name: "Figma", icon: SiFigma, color: "#F24E1E" },
-    { name: "Three.js", icon: SiThreedotjs, color: "#000000" },
-    { name: "GraphQL", icon: SiGraphql, color: "#E10098" },
+    { name: "Flutter", icon: SiFlutter, color: "#02569B" },
+    { name: "Swift", icon: SiSwift, color: "#F05138" },
 ];
 
 import { projects } from "@/data/projects";
