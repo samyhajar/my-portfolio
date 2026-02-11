@@ -39,7 +39,7 @@ export function GlobalSidebars() {
                     <a href="https://github.com/samyhajar" target="_blank" rel="noopener noreferrer" className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors duration-300 transform hover:scale-110">
                         <SiGithub size={24} />
                     </a>
-                    <a href="https://linkedin.com/in/samyhajar" target="_blank" rel="noopener noreferrer" className="text-[#0077b5] transition-transform duration-300 transform hover:scale-110">
+                    <a href="https://www.linkedin.com/in/samy-hajar-116137182/" target="_blank" rel="noopener noreferrer" className="text-[#0077b5] transition-transform duration-300 transform hover:scale-110">
                         <SiLinkedin size={24} />
                     </a>
                     <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-[#E1306C] transition-transform duration-300 transform hover:scale-110">
