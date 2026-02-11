@@ -95,7 +95,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     </div>
 
                     {/* Right Column - Visuals & Content */}
-                    <div className="lg:col-span-6 space-y-12 lg:space-y-24 lg:pt-32">
+                    <div className="lg:col-start-7 lg:col-span-5 space-y-12 lg:space-y-24 lg:pt-32">
                         {/* Carousel or 3D Image Container */}
                         <div className="w-full">
                             {project.gallery && project.gallery.length > 0 ? (
