@@ -36,7 +36,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     return (
         <main className="min-h-screen bg-transparent selection:bg-neutral-900 selection:text-white dark:selection:bg-white dark:selection:text-neutral-900">
             <div className="max-w-[1800px] mx-auto px-4 sm:px-8">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pt-32 pb-20">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-9 lg:gap-20 pt-32 pb-20">
 
                     {/* Left Column - Sticky Title & Meta */}
                     <div className="lg:col-start-2 lg:col-span-4 relative z-20">

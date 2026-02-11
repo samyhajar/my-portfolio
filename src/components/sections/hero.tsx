@@ -49,7 +49,7 @@ export function Hero() {
                 animate="visible"
                 className="max-w-[1400px] mx-auto w-full relative z-10"
             >
-                <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-12 lg:gap-16">
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-9 sm:gap-14 lg:gap-20">
                     {/* Left Column - Name */}
                     <motion.div variants={itemVariants} className="text-center lg:text-right flex-1 w-full lg:min-w-0">
                         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter text-neutral-900 dark:text-white break-words">
