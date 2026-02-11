@@ -11,7 +11,6 @@ import {
     SiNodedotjs,
     SiPostgresql,
     SiPrisma,
-    SiAmazonaws,
     SiVercel,
     SiFramer,
     SiThreedotjs,
@@ -26,7 +25,7 @@ import { FaFilePdf } from "react-icons/fa";
 import { LucideIcon, Cpu } from "lucide-react";
 
 interface IconConfig {
-    icon: React.ElementType;
+    icon: React.ComponentType<{ className?: string; style?: React.CSSProperties }>;
     color: string;
 }
 
@@ -41,7 +40,6 @@ const iconMap: Record<string, IconConfig> = {
     "Node.js": { icon: SiNodedotjs, color: "#339933" },
     "PostgreSQL": { icon: SiPostgresql, color: "#4169E1" },
     "Prisma": { icon: SiPrisma, color: "#2D3748" },
-    "AWS": { icon: SiAmazon, color: "#FF9900" },
     "Vercel": { icon: SiVercel, color: "currentColor" },
     "Framer Motion": { icon: SiFramer, color: "#0055FF" },
     "Three.js": { icon: SiThreedotjs, color: "currentColor" },

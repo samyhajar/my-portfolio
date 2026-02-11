@@ -19,6 +19,63 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "osfs-formation",
+    title: "OSFS Formation Portal",
+    description: "International digital learning and resource platform for global religious formation",
+    longDescription: "A comprehensive digital formation platform developed for the Oblates of St. Francis de Sales. The portal serves as a global hub for spiritual growth, providing localized resources, curriculum management, and community connection tools. Built with a focus on ease of use and high performance, it supports a diverse international community with varying levels of digital literacy.",
+    image: "/projects/osfs-formation.png",
+    tags: ["Education", "Global", "Next.js"],
+    featured: true,
+    year: "2024",
+    role: "Full Stack Developer",
+    technologies: ["Next.js", "React", "Supabase", "Tailwind CSS", "Vercel", "Turbopack", "TypeScript"],
+    challenges: [
+      "Managing complex internationalization (i18n) workflows for global resource distribution",
+      "Implementing a tiered access system for different formation stages and regions",
+      "Optimizing performance for users in regions with limited bandwidth"
+    ],
+    outcomes: [
+      "Successfully launched a unified global resource hub for the OSFS community",
+      "Streamlined curriculum distribution across multiple continents",
+      "Achieved sub-second page loads globally through edge optimization on Vercel"
+    ],
+    color: "#3b82f6", // blue-500
+    gallery: [
+      "/projects/osfs-hero.png",
+      "/projects/osfs-documents.png",
+      "/projects/osfs-tech.png"
+    ]
+  },
+  {
+    slug: "ortho-schuh",
+    title: "Ortho Dr. Schuh Patient App",
+    description: "Secure mobile-wrapped patient portal for pre- and post-operative document sharing",
+    longDescription: "A specialized medical application developed for Dr. Schuh to manage pre- and post-operative care for over 600 patients. The platform provides a secure, mobile-wrapped experience where patients can access personalized treatment plans, surgical checklists, and exercise videos. Features include automated document distribution, secure messaging, and a comprehensive admin backend for patient management.",
+    image: "/projects/ortho-schuh.png",
+    tags: ["Medical", "Django", "PWA"],
+    featured: true,
+    year: "2024",
+    role: "Full Stack Developer",
+    technologies: ["Django", "Tailwind CSS", "Python", "PostgreSQL", "Docker"],
+    challenges: [
+      "Ensuring 100% compliance with German medical data privacy standards while maintaining accessibility",
+      "Designing an intuitive mobile interface for a broad patient demographic (age 20-80+)",
+      "Automating complex document workflows for different surgical procedures (e.g., Hallux Valgus)"
+    ],
+    outcomes: [
+      "Successfully streamlined care for over 600 active patients",
+      "Reduced administrative overhead for document sharing by 75%",
+      "Achieved high patient engagement with digital exercise and recovery plans"
+    ],
+    color: "#0ea5e9", // sky-500
+    gallery: [
+      "/projects/ortho-schuh-hero.png",
+      "/projects/ortho-schuh-mobile-1.png",
+      "/projects/ortho-schuh-mobile-2.png",
+      "/projects/ortho-schuh-admin.png"
+    ]
+  },
+  {
     slug: "ai-recipe-generator",
     title: "AI Recipe Generator",
     description: "AI-powered recipe generation platform with personalized meal planning",
@@ -44,39 +101,14 @@ export const projects: Project[] = [
     color: "#eab308" // yellow-500
   },
   {
-    slug: "supabase-dashboard",
-    title: "Supabase Analytics Dashboard",
-    description: "Real-time analytics dashboard for Supabase projects with advanced metrics",
-    longDescription: "A powerful analytics dashboard that provides deep insights into Supabase projects. Features real-time monitoring, custom metric tracking, performance analytics, and automated reporting capabilities.",
-    image: "/projects/supabase-dashboard.png",
-    tags: ["Dashboard", "Analytics", "Real-time"],
-    github: "https://github.com/yourusername/supabase-dashboard",
-    demo: "https://supabase-dashboard-demo.vercel.app",
-    featured: true,
-    year: "2024",
-    role: "Frontend Developer",
-    technologies: ["React", "Supabase", "Chart.js", "TanStack Query", "Tailwind CSS"],
-    challenges: [
-      "Handling real-time data updates without performance degradation",
-      "Creating intuitive data visualizations for complex metrics",
-      "Implementing efficient caching strategies for large datasets"
-    ],
-    outcomes: [
-      "Reduced dashboard load time by 70%",
-      "Enabled real-time monitoring for 500+ projects",
-      "Improved decision-making speed for development teams"
-    ],
-    color: "#22c55e" // green-500
-  },
-  {
     slug: "werkzeugkiste",
     title: "Die digitale Werkzeugkiste",
     description: "Advanced LMS for social inclusion with automated PDF certificate generation and progression tracking.",
     longDescription: "A robust digital learning platform developed for 'arbeit plus'. It features automated module certificate creation using PDFKit, granular lesson progression tracking, interactive quizzes, and a comprehensive admin backend for dynamic module management. Built to empower job seekers through digital literacy.",
-    image: "/projects/werkzeugkiste.png",
+    image: "/projects/werkzeugkiste-correct.png",
     tags: ["Education", "Next.js", "Supabase"],
     demo: "https://werkzeugkiste.arbeitplus.at/",
-    featured: true,
+    featured: false,
     year: "2024",
     role: "Full Stack Developer",
     technologies: ["Next.js", "Supabase", "PDFKit", "Tailwind CSS", "Docker", "TypeScript"],
@@ -93,6 +125,7 @@ export const projects: Project[] = [
     ],
     color: "#e11d48",
     gallery: [
+      "/projects/werkzeugkiste-correct.png",
       "/projects/werkzeugkiste-hero.png",
       "/projects/werkzeugkiste-lesson.png",
       "/projects/werkzeugkiste-admin.png"
@@ -120,30 +153,6 @@ export const projects: Project[] = [
       "Saved $2M annually in maintenance costs"
     ],
     color: "#f97316" // orange-500
-  },
-  {
-    slug: "consent-management",
-    title: "Consent Management Platform",
-    description: "GDPR-compliant consent management system for enterprise applications",
-    longDescription: "A comprehensive consent management platform designed to help enterprises comply with GDPR and other privacy regulations. Features include consent tracking, user preference management, audit logging, and integration APIs.",
-    image: "/projects/consent-platform.png",
-    tags: ["Privacy", "Compliance", "Enterprise"],
-    github: "https://github.com/yourusername/consent-platform",
-    featured: false,
-    year: "2023",
-    role: "Backend Developer",
-    technologies: ["Node.js", "MongoDB", "Redis", "Docker", "Kubernetes"],
-    challenges: [
-      "Ensuring 100% audit trail accuracy for compliance",
-      "Building a flexible consent model for various regulations",
-      "Achieving sub-100ms response times for consent checks"
-    ],
-    outcomes: [
-      "Processed 10M+ consent requests monthly",
-      "Achieved full GDPR compliance for 20+ clients",
-      "Reduced compliance audit time by 80%"
-    ],
-    color: "#a855f7" // purple-500
   }
 ];
 
