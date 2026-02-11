@@ -75,7 +75,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: 0.2 }}
-                                    className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.9]"
+                                    className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-neutral-900 dark:text-white leading-[0.9]"
                                 >
                                     {project.title}
                                 </motion.h1>

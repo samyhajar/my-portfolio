@@ -86,9 +86,9 @@ export const projects: Project[] = [
       "Building a flexible admin system for modular content creation"
     ],
     outcomes: [
-      "Successfully launched 7 learning modules with interactive assessments",
-      "Automated certification process for thousands of participants",
-      "Streamlined content management for educational administrators"
+      "Serving 171 learners with 121 interactive lessons across 7 modules",
+      "Successfully generated 274 digital certificates for course completions",
+      "Dynamic content management for 28 courses and 28 assessments"
     ],
     color: "#e11d48",
     gallery: [
