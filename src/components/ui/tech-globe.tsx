@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useMemo, useState, createContext, useContext } from "react";
+import { useTheme } from "next-themes";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, Html, Sphere } from "@react-three/drei";
 import * as ONE from "three";
@@ -56,6 +57,8 @@ const HoverContext = createContext<{
 function TechNode({ position, tech }: { position: [number, number, number], tech: typeof TECH_STACK[number] }) {
     const Icon = tech.icon;
     const { setHoveredTech } = useContext(HoverContext);
+    const { theme } = useTheme();
+    const isDark = theme === "dark";
 
     return (
         <group position={position}>
@@ -67,7 +70,13 @@ function TechNode({ position, tech }: { position: [number, number, number], tech
                 >
                     {/* Icon */}
                     <div className="p-2 rounded-full transition-all duration-300 group-hover:scale-125 group-hover:bg-white/10 group-hover:backdrop-blur-md">
-                        <Icon size={30} style={{ color: tech.color, filter: 'drop-shadow(0 0 8px rgba(255,255,255,0.3))' }} />
+                        <Icon
+                            size={30}
+                            style={{
+                                color: tech.color,
+                                filter: `drop-shadow(0 0 ${isDark ? '12px' : '8px'} ${isDark ? 'rgba(255,255,255,0.45)' : 'rgba(255,255,255,0.3)'})`
+                            }}
+                        />
                     </div>
                 </div>
             </Html>
@@ -195,6 +204,8 @@ function TechSphere() {
     const groupRef = useRef<ONE.Group>(null);
     const { viewport } = useThree();
     const { hoveredTech } = useContext(HoverContext);
+    const { theme } = useTheme();
+    const isDark = theme === "dark";
 
     // Distribute points on a sphere using Fibonacci lattice
     const nodes = useMemo(() => {
@@ -237,20 +248,20 @@ function TechSphere() {
             {/* Wireframe Sphere */}
             <Sphere args={[2.0, 32, 32]}>
                 <meshStandardMaterial
-                    color="#a855f7"
+                    color={isDark ? "#b86bff" : "#a855f7"}
                     wireframe
                     transparent
-                    opacity={0.1}
+                    opacity={isDark ? 0.25 : 0.1}
                 />
             </Sphere>
 
-            {/* Connection Lines (Optional visual flair) */}
+            {/* Connection Lines */}
             <Sphere args={[2.1, 16, 16]}>
                 <meshStandardMaterial
-                    color="#3b82f6"
+                    color={isDark ? "#60a5fa" : "#3b82f6"}
                     wireframe
                     transparent
-                    opacity={0.05}
+                    opacity={isDark ? 0.15 : 0.05}
                 />
             </Sphere>
 
@@ -355,6 +366,19 @@ function ProjectDisplay() {
     );
 }
 
+function TechGlobeLighting() {
+    const { theme } = useTheme();
+    const isDark = theme === "dark";
+
+    return (
+        <>
+            <ambientLight intensity={isDark ? 1.2 : 0.5} />
+            <pointLight position={[10, 10, 10]} intensity={isDark ? 2.5 : 1} />
+            <pointLight position={[-10, -10, -10]} intensity={isDark ? 1 : 0.5} color={isDark ? "#4f46e5" : "#ffffff"} />
+        </>
+    );
+}
+
 export function TechGlobe() {
     const [hoveredTech, setHoveredTech] = useState<typeof TECH_STACK[number] | null>(null);
     const [isMobile, setIsMobile] = useState(false);
@@ -385,8 +409,7 @@ export function TechGlobe() {
                         <div className="w-full lg:w-[45%] h-1/2 lg:h-full relative flex items-center justify-center pt-24 sm:pt-28 lg:pt-0">
                             <div className="w-full h-full max-w-[600px]">
                                 <Canvas camera={{ position: [0, 0, 8], fov: 60 }} dpr={[1, 2]}>
-                                    <ambientLight intensity={0.5} />
-                                    <pointLight position={[10, 10, 10]} intensity={1} />
+                                    <TechGlobeLighting />
                                     <group position={[0, 0, 0]}>
                                         <TechSphere />
                                     </group>

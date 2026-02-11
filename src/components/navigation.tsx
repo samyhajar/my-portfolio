@@ -167,7 +167,9 @@ export function Navigation() {
                             </ContactModal>
                         </motion.div>
 
-                        <ThemeToggle />
+                        <div className="md:hidden">
+                            <ThemeToggle />
+                        </div>
 
                         {/* Mobile Menu Button */}
                         <Button
