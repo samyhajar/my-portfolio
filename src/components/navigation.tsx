@@ -30,7 +30,7 @@ export function Navigation() {
     useEffect(() => {
         const observerOptions = {
             root: null,
-            rootMargin: "-20% 0px -70% 0px",
+            rootMargin: "-30% 0px -30% 0px",
             threshold: 0,
         };
 
@@ -50,10 +50,19 @@ export function Navigation() {
             if (section) observer.observe(section);
         });
 
+        // Fallback for top of page
+        const handleScroll = () => {
+            if (window.scrollY < 100) {
+                setActiveSection("home");
+            }
+        };
+        window.addEventListener("scroll", handleScroll);
+
         return () => {
             sections.forEach((section) => {
                 if (section) observer.unobserve(section);
             });
+            window.removeEventListener("scroll", handleScroll);
         };
     }, []);
 
