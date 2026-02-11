@@ -42,8 +42,7 @@ export const projects: Project[] = [
     color: "#3b82f6", // blue-500
     gallery: [
       "/projects/osfs-hero.png",
-      "/projects/osfs-documents.png",
-      "/projects/osfs-tech.png"
+      "/projects/osfs-documents.png"
     ]
   },
   {

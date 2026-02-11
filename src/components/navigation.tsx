@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useLenis } from "@/components/smooth-scroll";
 import { ContactModal } from "@/components/ui/contact-modal";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
@@ -165,6 +166,8 @@ export function Navigation() {
                                 </Button>
                             </ContactModal>
                         </motion.div>
+
+                        <ThemeToggle />
 
                         {/* Mobile Menu Button */}
                         <Button
