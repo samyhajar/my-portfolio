@@ -23,7 +23,8 @@ import {
     SiGraphql,
     SiGithub,
     SiFlutter,
-    SiSwift
+    SiSwift,
+    SiDjango
 } from "react-icons/si";
 import { MorphingText } from "./text-morphing";
 
@@ -42,6 +43,7 @@ const TECH_STACK = [
     { name: "Figma", icon: SiFigma, color: "#F24E1E" },
     { name: "Flutter", icon: SiFlutter, color: "#02569B" },
     { name: "Swift", icon: SiSwift, color: "#F05138" },
+    { name: "Django", icon: SiDjango, color: "#092E20" },
 ];
 
 import { projects } from "@/data/projects";
