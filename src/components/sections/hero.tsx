@@ -63,7 +63,7 @@ export function Hero() {
                     {/* Right Column - Morphing Sentence */}
                     <motion.div variants={itemVariants} className="flex-1 w-full lg:min-w-0 flex justify-center lg:justify-start overflow-visible">
                         <div className="flex flex-col items-start gap-0 sm:gap-2 pl-4 sm:pl-0">
-                            <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-neutral-400 dark:text-neutral-500 shrink-0">
+                            <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-apple text-neutral-400 dark:text-neutral-500 shrink-0 italic -mb-4 sm:-mb-8 lg:-mb-14 -ml-4 sm:-ml-8 lg:-ml-12 drop-shadow-[0_0_15px_rgba(163,163,163,0.3)] dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all duration-300">
                                 I build
                             </span>
                             <div className="h-[50px] sm:h-[60px] md:h-[75px] lg:h-[90px] w-[280px] sm:w-[400px] lg:w-[600px] flex items-center justify-start overflow-visible">

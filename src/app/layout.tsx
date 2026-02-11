@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
@@ -15,8 +16,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
 import { GlobalSidebars } from "@/components/global-sidebars";
+
+const haloHandletter = localFont({
+  src: "../../public/fonts/HaloHandletter.otf",
+  variable: "--font-halo-handletter",
+});
 
 export default function RootLayout({
   children,
@@ -26,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${haloHandletter.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
