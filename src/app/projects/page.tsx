@@ -26,7 +26,7 @@ export default function ProjectsPage() {
                         <p className="text-sm font-bold tracking-widest text-neutral-500 uppercase mb-4">Archive</p>
                         <h1 className="text-6xl md:text-9xl font-bold tracking-tighter text-neutral-900 dark:text-white mb-8">
                             Selected <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">Chronicles</span>
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500 pr-2">Chronicles</span>
                         </h1>
                         <p className="text-xl text-neutral-600 dark:text-neutral-400 font-light leading-relaxed">
                             A deep dive into the evolution of my craft. From experimental prototypes to full-scale enterprise solutions.

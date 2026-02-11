@@ -75,6 +75,122 @@ function TechNode({ position, tech }: { position: [number, number, number], tech
     );
 }
 
+function MobileTechGrid() {
+    const { hoveredTech, setHoveredTech } = useContext(HoverContext);
+
+    return (
+        <div className="max-w-7xl mx-auto px-4 py-8">
+            {/* Tech Grid */}
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-8">
+                {TECH_STACK.map((tech) => {
+                    const Icon = tech.icon;
+                    const isActive = hoveredTech?.name === tech.name;
+                    return (
+                        <button
+                            key={tech.name}
+                            onClick={() => setHoveredTech(isActive ? null : tech)}
+                            className={`flex flex-col items-center justify-center p-5 sm:p-6 rounded-2xl transition-all duration-300 ${isActive
+                                ? 'bg-white dark:bg-neutral-900 shadow-xl scale-105 ring-2'
+                                : 'bg-white/60 dark:bg-neutral-900/60 hover:bg-white dark:hover:bg-neutral-900 hover:shadow-lg active:scale-95'
+                                }`}
+                            style={isActive ? { '--tw-ring-color': tech.color } as React.CSSProperties : {}}
+                        >
+                            <Icon
+                                size={isActive ? 56 : 48}
+                                style={{ color: tech.color }}
+                                className="transition-all duration-300 mb-2"
+                            />
+                            <span className={`text-xs sm:text-sm font-semibold text-center transition-colors ${isActive ? 'text-neutral-900 dark:text-white' : 'text-neutral-600 dark:text-neutral-400'
+                                }`}>
+                                {tech.name}
+                            </span>
+                        </button>
+                    );
+                })}
+            </div>
+
+            {/* Project Display */}
+            <MobileProjectDisplay />
+        </div>
+    );
+}
+
+function MobileProjectDisplay() {
+    const { hoveredTech } = useContext(HoverContext);
+
+    const relatedProjects = useMemo(() => {
+        if (!hoveredTech) return [];
+        return projects.filter(project =>
+            project.technologies.some(t =>
+                t.toLowerCase().includes(hoveredTech.name.toLowerCase()) ||
+                hoveredTech.name.toLowerCase().includes(t.toLowerCase())
+            )
+        );
+    }, [hoveredTech]);
+
+    if (!hoveredTech) {
+        return (
+            <div className="text-center py-8">
+                <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                    Tap a technology to see related projects
+                </p>
+            </div>
+        );
+    }
+
+    return (
+        <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            {/* Tech Name */}
+            <div className="text-center space-y-1">
+                <p className="text-xs font-bold tracking-widest text-neutral-500 uppercase">
+                    Selected Technology
+                </p>
+                <h3
+                    className="text-2xl sm:text-3xl font-bold tracking-tight"
+                    style={{ color: hoveredTech.color }}
+                >
+                    {hoveredTech.name}
+                </h3>
+                <p className="text-xs text-neutral-500">
+                    {relatedProjects.length} {relatedProjects.length === 1 ? 'project' : 'projects'}
+                </p>
+            </div>
+
+            {/* Project Cards */}
+            {relatedProjects.length > 0 ? (
+                <div className="space-y-3">
+                    {relatedProjects.map((project, idx) => (
+                        <div
+                            key={project.slug}
+                            className="flex items-start gap-3 p-3 rounded-lg bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800"
+                            style={{
+                                animationDelay: `${idx * 100}ms`,
+                            }}
+                        >
+                            <span
+                                className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0"
+                                style={{ backgroundColor: project.color || '#3b82f6' }}
+                            />
+                            <div className="flex-1 min-w-0">
+                                <p className="text-sm font-medium text-neutral-900 dark:text-white truncate">
+                                    {project.title}
+                                </p>
+                                <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2">
+                                    {project.description}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            ) : (
+                <p className="text-center text-sm text-neutral-500 dark:text-neutral-400 py-4">
+                    No projects using this technology yet
+                </p>
+            )}
+        </div>
+    );
+}
+
 function TechSphere() {
     const groupRef = useRef<ONE.Group>(null);
     const { viewport } = useThree();
@@ -163,16 +279,16 @@ function ProjectDisplay() {
     const projectTitles = relatedProjects.map(p => p.title);
 
     return (
-        <div className="flex flex-col items-start justify-center h-full px-8 lg:px-16 pointer-events-none">
+        <div className="flex flex-col items-start justify-center h-full px-4 sm:px-6 md:px-8 lg:px-16 pointer-events-none">
             {hoveredTech && relatedProjects.length > 0 ? (
-                <div className="space-y-6 animate-in fade-in slide-in-from-right-8 duration-500">
+                <div className="space-y-4 sm:space-y-5 lg:space-y-6 animate-in fade-in slide-in-from-right-8 duration-500">
                     {/* Tech Name */}
-                    <div className="space-y-2">
-                        <p className="text-sm font-bold tracking-widest text-neutral-500 uppercase">
+                    <div className="space-y-1 sm:space-y-2">
+                        <p className="text-xs sm:text-sm font-bold tracking-widest text-neutral-500 uppercase">
                             Technology
                         </p>
                         <h3
-                            className="text-5xl md:text-7xl font-bold tracking-tight"
+                            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight"
                             style={{ color: hoveredTech.color }}
                         >
                             {hoveredTech.name}
@@ -180,11 +296,11 @@ function ProjectDisplay() {
                     </div>
 
                     {/* Projects with Morphing Animation */}
-                    <div className="space-y-3">
-                        <p className="text-sm font-bold tracking-widest text-neutral-500 uppercase">
+                    <div className="space-y-2 sm:space-y-3">
+                        <p className="text-xs sm:text-sm font-bold tracking-widest text-neutral-500 uppercase">
                             Used in
                         </p>
-                        <div className="text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-white">
+                        <div className="text-2xl sm:text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-white">
                             <MorphingText
                                 words={projectTitles}
                                 interval={2000}
@@ -192,7 +308,7 @@ function ProjectDisplay() {
                                 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500"
                             />
                         </div>
-                        <p className="text-sm text-neutral-500">
+                        <p className="text-xs sm:text-sm text-neutral-500">
                             {relatedProjects.length} {relatedProjects.length === 1 ? 'project' : 'projects'}
                         </p>
                     </div>
@@ -202,7 +318,7 @@ function ProjectDisplay() {
                         {relatedProjects.slice(0, 3).map((project, idx) => (
                             <div
                                 key={project.slug}
-                                className="flex items-start gap-3 p-3 rounded-lg bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm border border-neutral-200 dark:border-neutral-800"
+                                className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-white/50 dark:bg-neutral-900/50 backdrop-blur-sm border border-neutral-200 dark:border-neutral-800"
                                 style={{
                                     animationDelay: `${idx * 100}ms`,
                                 }}
@@ -212,7 +328,7 @@ function ProjectDisplay() {
                                     style={{ backgroundColor: project.color || '#3b82f6' }}
                                 />
                                 <div>
-                                    <p className="font-medium text-neutral-900 dark:text-white">
+                                    <p className="text-sm sm:text-base font-medium text-neutral-900 dark:text-white">
                                         {project.title}
                                     </p>
                                     <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2">
@@ -222,7 +338,7 @@ function ProjectDisplay() {
                             </div>
                         ))}
                         {relatedProjects.length > 3 && (
-                            <p className="text-sm text-neutral-500 italic pl-5">
+                            <p className="text-xs sm:text-sm text-neutral-500 italic pl-4 sm:pl-5">
                                 + {relatedProjects.length - 3} more projects
                             </p>
                         )}
@@ -230,7 +346,7 @@ function ProjectDisplay() {
                 </div>
             ) : (
                 <div className="space-y-4 text-center lg:text-left">
-                    <p className="text-lg text-neutral-500 dark:text-neutral-400">
+                    <p className="text-sm sm:text-base lg:text-lg text-neutral-500 dark:text-neutral-400">
                         Hover over a technology icon to see projects
                     </p>
                 </div>
@@ -241,44 +357,55 @@ function ProjectDisplay() {
 
 export function TechGlobe() {
     const [hoveredTech, setHoveredTech] = useState<typeof TECH_STACK[number] | null>(null);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     return (
         <HoverContext.Provider value={{ hoveredTech, setHoveredTech }}>
-            <section id="skills" className="min-h-screen w-full bg-neutral-50 dark:bg-neutral-950 relative overflow-hidden">
+            <section id="skills" className="min-h-screen w-full bg-neutral-50 dark:bg-neutral-950 relative overflow-hidden py-16 lg:py-0">
                 {/* Section Header */}
-                <div className="absolute top-20 left-0 right-0 z-10 text-center space-y-4 px-4 pointer-events-none">
-                    <p className="text-sm font-bold tracking-widest text-neutral-500 uppercase">Tech Stack</p>
-                    <h2 className="text-6xl md:text-8xl font-bold tracking-tighter text-neutral-900 dark:text-white drop-shadow-sm">
+                <div className="relative lg:absolute top-0 lg:top-20 left-0 right-0 z-10 text-center space-y-2 lg:space-y-4 px-4 mb-8 lg:mb-0 pointer-events-none">
+                    <p className="text-xs sm:text-sm font-bold tracking-widest text-neutral-500 uppercase">Tech Stack</p>
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold tracking-tighter text-neutral-900 dark:text-white drop-shadow-sm">
                         My <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 animate-gradient-x">Skills</span>
                     </h2>
                 </div>
 
-                {/* Split Layout: Globe Left, Info Right */}
-                <div className="w-full h-screen flex flex-col lg:flex-row items-center justify-center gap-0 lg:gap-8 max-w-[1600px] mx-auto">
-                    {/* Left Side - Globe */}
-                    <div className="w-full lg:w-[45%] h-1/2 lg:h-full relative flex items-center justify-center">
-                        <div className="w-full h-full max-w-[600px]">
-                            <Canvas camera={{ position: [0, 0, 8], fov: 60 }} dpr={[1, 2]}>
-                                <ambientLight intensity={0.5} />
-                                <pointLight position={[10, 10, 10]} intensity={1} />
-                                <group position={[0, 0, 0]}>
-                                    <TechSphere />
-                                </group>
-                                <OrbitControls
-                                    enableZoom={false}
-                                    enablePan={false}
-                                    autoRotate={!hoveredTech}
-                                    autoRotateSpeed={0.5}
-                                />
-                            </Canvas>
+                {isMobile ? (
+                    <MobileTechGrid />
+                ) : (
+                    <div className="w-full h-screen flex flex-col lg:flex-row items-center justify-center gap-0 lg:gap-8 max-w-[1600px] mx-auto">
+                        {/* Left Side - Globe */}
+                        <div className="w-full lg:w-[45%] h-1/2 lg:h-full relative flex items-center justify-center pt-24 sm:pt-28 lg:pt-0">
+                            <div className="w-full h-full max-w-[600px]">
+                                <Canvas camera={{ position: [0, 0, 8], fov: 60 }} dpr={[1, 2]}>
+                                    <ambientLight intensity={0.5} />
+                                    <pointLight position={[10, 10, 10]} intensity={1} />
+                                    <group position={[0, 0, 0]}>
+                                        <TechSphere />
+                                    </group>
+                                    <OrbitControls
+                                        enableZoom={false}
+                                        enablePan={false}
+                                        autoRotate={!hoveredTech}
+                                        autoRotateSpeed={0.5}
+                                    />
+                                </Canvas>
+                            </div>
+                        </div>
+
+                        {/* Right Side - Project Info */}
+                        <div className="w-full lg:w-[55%] h-1/2 lg:h-full flex items-center justify-start">
+                            <ProjectDisplay />
                         </div>
                     </div>
-
-                    {/* Right Side - Project Info */}
-                    <div className="w-full lg:w-[55%] h-1/2 lg:h-full flex items-center justify-start">
-                        <ProjectDisplay />
-                    </div>
-                </div>
+                )}
             </section>
         </HoverContext.Provider>
     );

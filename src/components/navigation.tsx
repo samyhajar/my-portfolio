@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useLenis } from "@/components/smooth-scroll";
+import { ContactModal } from "@/components/ui/contact-modal";
 
 export function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
@@ -147,12 +148,13 @@ export function Navigation() {
                             transition={{ duration: 0.5, delay: 0.25 }}
                             className="hidden md:block"
                         >
-                            <Button
-                                asChild
-                                className="rounded-full bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-200"
-                            >
-                                <a href="#contact">Book a Call</a>
-                            </Button>
+                            <ContactModal>
+                                <Button
+                                    className="rounded-full bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-200"
+                                >
+                                    Book a Call
+                                </Button>
+                            </ContactModal>
                         </motion.div>
 
                         {/* Mobile Menu Button */}
@@ -172,30 +174,38 @@ export function Navigation() {
                     </div>
                 </div>
 
-                {/* Mobile Navigation */}
+                {/* Mobile Navigation Overlay */}
                 <motion.div
                     initial={false}
                     animate={{
-                        height: isOpen ? "auto" : 0,
                         opacity: isOpen ? 1 : 0,
+                        pointerEvents: isOpen ? "auto" : "none",
                     }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="md:hidden overflow-hidden"
+                    transition={{ duration: 0.3 }}
+                    className="fixed inset-0 bg-white/95 dark:bg-neutral-950/95 backdrop-blur-xl z-40 md:hidden flex flex-col items-center justify-center"
+                    style={{ top: 0, height: "100dvh" }}
                 >
-                    <div className="py-4 space-y-2">
+                    {/* Close Button */}
+                    <button
+                        onClick={() => setIsOpen(false)}
+                        className="absolute top-6 right-4 p-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                    >
+                        <X className="w-8 h-8" />
+                    </button>
+
+                    <div className="flex flex-col items-center gap-8">
                         {links.map((link, index) => (
                             <motion.a
                                 key={link.href}
                                 href={link.href}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -20 }}
-                                transition={{ duration: 0.2, delay: isOpen ? index * 0.05 : 0 }}
-                                className={`block px-4 py-3 text-sm font-medium rounded-lg transition-colors ${activeSection === link.id
-                                    ? "bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900"
-                                    : "text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-900"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 20 }}
+                                transition={{ duration: 0.4, delay: isOpen ? 0.1 + index * 0.1 : 0 }}
+                                className={`text-3xl sm:text-4xl font-bold tracking-tight transition-colors ${activeSection === link.id
+                                    ? "text-neutral-900 dark:text-white"
+                                    : "text-neutral-400 dark:text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
                                     }`}
-                                onClick={(e) => {
-                                    e.preventDefault();
+                                onClick={() => {
                                     setIsOpen(false);
                                     lenis?.scrollTo(`#${link.id}`, { offset: -80 });
                                 }}
@@ -204,15 +214,16 @@ export function Navigation() {
                             </motion.a>
                         ))}
                         <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -20 }}
-                            transition={{ duration: 0.2, delay: isOpen ? links.length * 0.05 : 0 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 20 }}
+                            transition={{ duration: 0.4, delay: isOpen ? 0.1 + links.length * 0.1 : 0 }}
+                            className="pt-8"
                         >
-                            <Button className="w-full mt-2 rounded-full" asChild>
-                                <a href="#contact" onClick={() => setIsOpen(false)}>
+                            <ContactModal>
+                                <Button size="lg" className="rounded-full px-8 text-lg" onClick={() => setIsOpen(false)}>
                                     Book a Call
-                                </a>
-                            </Button>
+                                </Button>
+                            </ContactModal>
                         </motion.div>
                     </div>
                 </motion.div>

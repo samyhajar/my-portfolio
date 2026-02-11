@@ -41,38 +41,40 @@ export function Hero() {
     };
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 sm:px-6">
             {/* Main Content */}
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
-                className="max-w-[1400px] mx-auto px-4 w-full relative z-10"
+                className="max-w-[1400px] mx-auto w-full relative z-10"
             >
-                <div className="flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-16">
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-12 lg:gap-16">
                     {/* Left Column - Name */}
-                    <motion.div variants={itemVariants} className="text-center lg:text-right flex-1 min-w-0">
-                        <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter text-neutral-900 dark:text-white whitespace-nowrap">
+                    <motion.div variants={itemVariants} className="text-center lg:text-right flex-1 w-full lg:min-w-0">
+                        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter text-neutral-900 dark:text-white break-words">
                             Samy Hajar
                         </h1>
-                        <p className="text-xl md:text-2xl text-neutral-500 dark:text-neutral-400 mt-2 font-medium tracking-[0.2em] uppercase">
+                        <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-neutral-500 dark:text-neutral-400 mt-3 sm:mt-4 font-medium tracking-[0.15em] sm:tracking-[0.2em] uppercase">
                             Full Stack Developer
                         </p>
                     </motion.div>
 
                     {/* Right Column - Morphing Sentence */}
-                    <motion.div variants={itemVariants} className="text-center lg:text-left flex-1 min-w-0 flex flex-col sm:flex-row items-center sm:items-baseline justify-center lg:justify-start gap-4 overflow-visible">
-                        <span className="text-4xl md:text-6xl lg:text-7xl font-bold text-neutral-400 dark:text-neutral-500 shrink-0">
-                            I build
-                        </span>
-                        <div className="h-[60px] md:h-[90px] w-auto min-w-[300px] flex items-center justify-center sm:justify-start overflow-visible">
-                            <GooeyText
-                                texts={["Experiences", "Solutions", "Products", "The Future"]}
-                                morphTime={1}
-                                cooldownTime={2}
-                                className="text-5xl md:text-7xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 dark:from-purple-400 dark:via-pink-400 dark:to-blue-400"
-                                textClassName="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 text-center sm:text-left"
-                            />
+                    <motion.div variants={itemVariants} className="flex-1 w-full lg:min-w-0 flex justify-center lg:justify-start overflow-visible">
+                        <div className="flex flex-col items-start gap-0 sm:gap-2 pl-4 sm:pl-0">
+                            <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-neutral-400 dark:text-neutral-500 shrink-0">
+                                I build
+                            </span>
+                            <div className="h-[50px] sm:h-[60px] md:h-[75px] lg:h-[90px] w-[280px] sm:w-[400px] lg:w-[600px] flex items-center justify-start overflow-visible">
+                                <GooeyText
+                                    texts={["Experiences", "Solutions", "Products", "The Future"]}
+                                    morphTime={1}
+                                    cooldownTime={2}
+                                    className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 leading-tight"
+                                    textClassName="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 dark:from-purple-400 dark:via-pink-400 dark:to-blue-400 text-left leading-tight"
+                                />
+                            </div>
                         </div>
                     </motion.div>
                 </div>
@@ -81,7 +83,7 @@ export function Hero() {
                 {/* Description */}
                 <motion.p
                     variants={itemVariants}
-                    className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed mt-16 text-center"
+                    className="text-sm sm:text-base md:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed mt-8 sm:mt-12 lg:mt-16 text-center px-4"
                 >
                     I transform thorny problems into elegant solutions using visual design, rapid prototyping, and interaction skills.
                 </motion.p>
@@ -89,14 +91,14 @@ export function Hero() {
                 {/* CTA Button */}
                 <motion.div
                     variants={itemVariants}
-                    className="mt-12 text-center"
+                    className="mt-8 sm:mt-10 lg:mt-12 text-center"
                 >
                     <motion.div
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="inline-block"
                     >
-                        <Button asChild size="lg" className="gap-2 rounded-full px-8 bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-100">
+                        <Button asChild size="lg" className="gap-2 rounded-full px-6 sm:px-8 text-sm sm:text-base bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-100">
                             <a href="#projects" onClick={scrollToProjects}>
                                 View Projects
                                 <ArrowRight className="w-4 h-4" />
@@ -114,9 +116,9 @@ export function Hero() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.6, repeat: Infinity, repeatType: "reverse", repeatDelay: 1 }}
-                className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
+                className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
             >
-                <ChevronDown className="w-6 h-6 animate-bounce" />
+                <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 animate-bounce" />
             </motion.button>
         </section>
     );

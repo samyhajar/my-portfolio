@@ -15,7 +15,8 @@ function ProjectCard3D({
     index,
     isDark,
     cameraZ,
-    isLeft
+    isLeft,
+    isMobile
 }: {
     project: Project;
     position: [number, number, number];
@@ -23,6 +24,7 @@ function ProjectCard3D({
     isDark: boolean;
     cameraZ: number;
     isLeft: boolean;
+    isMobile: boolean;
 }) {
     const meshRef = useRef<THREE.Mesh>(null);
     const [hovered, setHovered] = useState(false);
@@ -33,7 +35,7 @@ function ProjectCard3D({
     const distanceToCamera = Math.abs(position[2] - cameraZ);
     // Smooth fade: visible between 5 and 20 units away
     const titleOpacity = Math.max(0, Math.min(1, (20 - distanceToCamera) / 10));
-    const isVisible = distanceToCamera < 25;
+    const isVisible = distanceToCamera < 35; // Increased visibility range for smoother exit
 
     // Uniforms for a subtle liquid distortion shader on the cards
     const uniforms = useMemo(() => ({
@@ -45,6 +47,7 @@ function ProjectCard3D({
     useFrame((state) => {
         if (meshRef.current) {
             // Very subtle rotation only on hover
+            // On mobile, keep it simpler/straighter
             const targetRotation = hovered ? (isLeft ? 0.05 : -0.05) : 0;
             meshRef.current.rotation.y = THREE.MathUtils.lerp(meshRef.current.rotation.y, targetRotation, 0.1);
 
@@ -57,8 +60,11 @@ function ProjectCard3D({
 
     if (!isVisible) return null;
 
+    // Mobile adjustments
+    const scale = isMobile ? 0.65 : 1;
+
     return (
-        <group position={position}>
+        <group position={position} scale={[scale, scale, 1]}>
             <mesh
                 ref={meshRef}
                 onPointerOver={() => setHovered(true)}
@@ -125,12 +131,15 @@ function ProjectCard3D({
 
             {/* Side label for context */}
             <Text
-                position={[isLeft ? -4.5 : 4.5, -2.8, 0.1]}
-                fontSize={0.2}
+                position={isMobile
+                    ? [0, -3.2, 0.1] // Mobile: Bottom center
+                    : [isLeft ? -4.5 : 4.5, -2.8, 0.1] // Desktop: Side
+                }
+                fontSize={isMobile ? 0.3 : 0.2}
                 color={isDark ? "white" : "#171717"}
-                anchorX={isLeft ? "left" : "right"}
+                anchorX={isMobile ? "center" : (isLeft ? "left" : "right")}
                 anchorY="middle"
-                fillOpacity={0.5 * titleOpacity}
+                fillOpacity={0.8 * titleOpacity} // Increased opacity for better mobile visibility
             >
                 {project.title.toUpperCase()}
             </Text>
@@ -142,16 +151,33 @@ const maxTitleSize = 0.4;
 
 function Scene({ projects, isDark }: { projects: Project[]; isDark: boolean }) {
     const scrollRef = useRef(0);
-    const { camera } = useThree();
+    const { camera, viewport } = useThree();
     const [cameraZ, setCameraZ] = useState(10);
+
+    const isMobile = viewport.width < 10; // Threshold for mobile layout in 3D units
 
     // Handle scroll to move camera along Z-axis
     useFrame(() => {
         const scrollY = window.scrollY;
-        // Structured corridor traversal
-        const targetZ = 10 - (scrollY * 0.08);
-        camera.position.z = THREE.MathUtils.lerp(camera.position.z, targetZ, 0.1);
-        setCameraZ(camera.position.z);
+
+        if (isMobile) {
+            // Mobile: Vertical scroll (Y-axis), Fixed Z
+            // Move camera down (negative Y) to see items stacked downwards
+            // Rate of 0.02 means 1000px scroll moves 20 units down
+            const targetY = -(scrollY * 0.025);
+            camera.position.y = THREE.MathUtils.lerp(camera.position.y, targetY, 0.1);
+
+            // Keep Z fixed and stable
+            camera.position.z = THREE.MathUtils.lerp(camera.position.z, 10, 0.1);
+            setCameraZ(10); // Maintain constant visibility calculation for children
+        } else {
+            // Desktop: Tunnel scroll (Z-axis), Fixed Y
+            camera.position.y = THREE.MathUtils.lerp(camera.position.y, 0, 0.1);
+
+            const targetZ = 10 - (scrollY * 0.08);
+            camera.position.z = THREE.MathUtils.lerp(camera.position.z, targetZ, 0.1);
+            setCameraZ(camera.position.z);
+        }
     });
 
     return (
@@ -163,6 +189,27 @@ function Scene({ projects, isDark }: { projects: Project[]; isDark: boolean }) {
             {projects.map((project, i) => {
                 const pairIndex = Math.floor(i / 2);
                 const isLeft = i % 2 === 0;
+
+                // Responsive positioning logic
+                let position: [number, number, number];
+
+                if (isMobile) {
+                    // Mobile: Vertical Stack (Y-axis)
+                    // No Z-depth, simple vertical list
+                    position = [
+                        0,
+                        -3.5 - (i * 5.5), // Start lower to clear the HTML title
+                        0
+                    ];
+                } else {
+                    // Desktop: Dual column "Precision Lanes" (Z-axis)
+                    position = [
+                        isLeft ? -6 : 6,
+                        0,
+                        -pairIndex * 60
+                    ];
+                }
+
                 return (
                     <ProjectCard3D
                         key={project.slug}
@@ -171,12 +218,8 @@ function Scene({ projects, isDark }: { projects: Project[]; isDark: boolean }) {
                         isDark={isDark}
                         cameraZ={cameraZ}
                         isLeft={isLeft}
-                        // Split view: Precision Lanes, paired by Z-level
-                        position={[
-                            isLeft ? -6 : 6,
-                            0,
-                            -pairIndex * 60 // Fixed Z-levels for cinema scale
-                        ]}
+                        isMobile={isMobile}
+                        position={position}
                     />
                 );
             })}
