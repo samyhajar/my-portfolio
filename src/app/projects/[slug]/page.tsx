@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import * as motion from "framer-motion/client";
 import { ProjectImage3D } from "@/components/ui/project-image-3d";
+import { ProjectCarousel } from "@/components/ui/project-carousel";
 import { ProjectNavigation } from "@/components/project-navigation";
 
 export async function generateStaticParams() {
@@ -95,9 +96,13 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
                     {/* Right Column - Visuals & Content */}
                     <div className="lg:col-span-7 space-y-12 lg:space-y-24 lg:pt-32">
-                        {/* 3D Tilted Image Container */}
+                        {/* Carousel or 3D Image Container */}
                         <div className="w-full">
-                            <ProjectImage3D src={project.image} alt={project.title} />
+                            {project.gallery && project.gallery.length > 0 ? (
+                                <ProjectCarousel images={project.gallery} alt={project.title} />
+                            ) : (
+                                <ProjectImage3D src={project.image} alt={project.title} />
+                            )}
                         </div>
 
                         {/* Bento Grid Content */}

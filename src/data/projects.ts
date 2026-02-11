@@ -14,6 +14,7 @@ export interface Project {
   challenges?: string[];
   outcomes?: string[];
   color: string;
+  gallery?: string[];
 }
 
 export const projects: Project[] = [
@@ -89,7 +90,12 @@ export const projects: Project[] = [
       "Automated certification process for thousands of participants",
       "Streamlined content management for educational administrators"
     ],
-    color: "#e11d48"
+    color: "#e11d48",
+    gallery: [
+      "/projects/werkzeugkiste-hero.png",
+      "/projects/werkzeugkiste-lesson.png",
+      "/projects/werkzeugkiste-admin.png"
+    ]
   },
   {
     slug: "mining-dashboard",
