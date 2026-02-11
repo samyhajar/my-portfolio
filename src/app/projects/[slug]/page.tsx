@@ -9,6 +9,7 @@ import * as motion from "framer-motion/client";
 import { ProjectImage3D } from "@/components/ui/project-image-3d";
 import { ProjectCarousel } from "@/components/ui/project-carousel";
 import { ProjectNavigation } from "@/components/project-navigation";
+import { TechIcon } from "@/components/ui/tech-icon";
 
 export async function generateStaticParams() {
     return projects.map((project) => ({
@@ -134,8 +135,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     {project.technologies.map((tech) => (
                                         <span
                                             key={tech}
-                                            className="px-3 py-1.5 rounded-lg bg-white dark:bg-neutral-800 text-sm font-medium border border-neutral-200 dark:border-neutral-700 shadow-sm"
+                                            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white dark:bg-neutral-800 text-sm font-medium border border-neutral-200 dark:border-neutral-700 shadow-sm"
                                         >
+                                            <TechIcon name={tech} className="w-4 h-4" />
                                             {tech}
                                         </span>
                                     ))}
