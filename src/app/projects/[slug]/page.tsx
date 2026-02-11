@@ -38,7 +38,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pt-32 pb-20">
 
                     {/* Left Column - Sticky Title & Meta */}
-                    <div className="lg:col-span-5 relative z-20">
+                    <div className="lg:col-start-2 lg:col-span-4 relative z-20">
                         <div className="lg:sticky lg:top-32 space-y-8 lg:space-y-12">
                             {/* Back Link */}
                             <motion.div
@@ -95,7 +95,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     </div>
 
                     {/* Right Column - Visuals & Content */}
-                    <div className="lg:col-span-7 space-y-12 lg:space-y-24 lg:pt-32">
+                    <div className="lg:col-span-6 space-y-12 lg:space-y-24 lg:pt-32">
                         {/* Carousel or 3D Image Container */}
                         <div className="w-full">
                             {project.gallery && project.gallery.length > 0 ? (
