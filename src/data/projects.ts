@@ -76,31 +76,6 @@ export const projects: Project[] = [
     ]
   },
   {
-    slug: "ai-recipe-generator",
-    title: "AI Recipe Generator",
-    description: "AI-powered recipe generation platform with personalized meal planning",
-    longDescription: "A comprehensive AI-powered recipe generation platform that creates personalized meal plans based on dietary preferences, available ingredients, and nutritional goals. Features include real-time recipe generation, ingredient substitution suggestions, and meal planning calendars.",
-    image: "/projects/recipe-generator.png",
-    tags: ["AI", "Full Stack", "React"],
-    github: "https://github.com/yourusername/ai-recipe-generator",
-    demo: "https://recipe-generator-demo.vercel.app",
-    featured: true,
-    year: "2024",
-    role: "Full Stack Developer",
-    technologies: ["Next.js", "OpenAI API", "Supabase", "Tailwind CSS", "TypeScript"],
-    challenges: [
-      "Implementing efficient AI prompt engineering for consistent recipe quality",
-      "Designing a scalable database schema for recipe storage and user preferences",
-      "Optimizing API costs while maintaining fast response times"
-    ],
-    outcomes: [
-      "Generated over 10,000 unique recipes for users",
-      "Achieved 95% user satisfaction rate",
-      "Reduced average meal planning time by 60%"
-    ],
-    color: "#eab308" // yellow-500
-  },
-  {
     slug: "werkzeugkiste",
     title: "Die digitale Werkzeugkiste",
     description: "Advanced LMS for social inclusion with automated PDF certificate generation and progression tracking.",
@@ -108,7 +83,7 @@ export const projects: Project[] = [
     image: "/projects/werkzeugkiste-correct.png",
     tags: ["Education", "Next.js", "Supabase"],
     demo: "https://werkzeugkiste.arbeitplus.at/",
-    featured: false,
+    featured: true,
     year: "2024",
     role: "Full Stack Developer",
     technologies: ["Next.js", "Supabase", "PDFKit", "Tailwind CSS", "Docker", "TypeScript"],
@@ -130,6 +105,31 @@ export const projects: Project[] = [
       "/projects/werkzeugkiste-lesson.png",
       "/projects/werkzeugkiste-admin.png"
     ]
+  },
+  {
+    slug: "ai-recipe-generator",
+    title: "AI Recipe Generator",
+    description: "AI-powered recipe generation platform with personalized meal planning",
+    longDescription: "A comprehensive AI-powered recipe generation platform that creates personalized meal plans based on dietary preferences, available ingredients, and nutritional goals. Features include real-time recipe generation, ingredient substitution suggestions, and meal planning calendars.",
+    image: "/projects/recipe-generator.png",
+    tags: ["AI", "Full Stack", "React"],
+    github: "https://github.com/yourusername/ai-recipe-generator",
+    demo: "https://recipe-generator-demo.vercel.app",
+    featured: false,
+    year: "2024",
+    role: "Full Stack Developer",
+    technologies: ["Next.js", "OpenAI API", "Supabase", "Tailwind CSS", "TypeScript"],
+    challenges: [
+      "Implementing efficient AI prompt engineering for consistent recipe quality",
+      "Designing a scalable database schema for recipe storage and user preferences",
+      "Optimizing API costs while maintaining fast response times"
+    ],
+    outcomes: [
+      "Generated over 10,000 unique recipes for users",
+      "Achieved 95% user satisfaction rate",
+      "Reduced average meal planning time by 60%"
+    ],
+    color: "#eab308" // yellow-500
   },
   {
     slug: "mining-dashboard",
