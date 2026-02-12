@@ -4,8 +4,9 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Project } from "@/data/projects";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export function ProjectGallery({ projects }: { projects: Project[] }) {
     // Desktop Scroll Logic
@@ -42,6 +43,8 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
 }
 
 function DesktopProjectCard({ project, index }: { project: Project; index: number }) {
+    const t = useTranslations("Projects");
+
     return (
         <Link href={`/projects/${project.slug}`} className="group relative w-[800px] h-[500px] flex-shrink-0 block">
             <div className="absolute inset-0 bg-neutral-100 dark:bg-neutral-900 rounded-3xl overflow-hidden shadow-sm group-hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800">
@@ -62,7 +65,7 @@ function DesktopProjectCard({ project, index }: { project: Project; index: numbe
                     <h3 className="text-4xl font-bold text-white mb-2">{project.title}</h3>
                     <div className="h-px w-0 group-hover:w-full bg-white/50 transition-all duration-700 ease-out mb-4" />
                     <div className="flex items-center gap-2 text-white/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                        <span className="text-sm font-medium uppercase tracking-widest">View Project</span>
+                        <span className="text-sm font-medium uppercase tracking-widest">{t("viewProject")}</span>
                         <ArrowRight className="w-4 h-4" />
                     </div>
                 </div>

@@ -3,15 +3,17 @@
 import { useState } from "react";
 import { Project } from "@/data/projects";
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { HoverRevealImage } from "@/components/ui/hover-reveal-image";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 interface FeaturedProjectsProps {
     projects: Project[];
 }
 
 export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
+    const t = useTranslations("Projects");
     const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
     const activeImage = hoveredProject
@@ -33,10 +35,10 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
             <div className="max-w-7xl mx-auto w-full relative z-10">
                 {/* Header */}
                 <div className="mb-12 sm:mb-16 lg:mb-20 text-center md:text-left">
-                    <p className="text-xs sm:text-sm font-bold tracking-widest text-neutral-500 uppercase mb-3 sm:mb-4">Selected Works</p>
+                    <p className="text-xs sm:text-sm font-bold tracking-widest text-neutral-500 uppercase mb-3 sm:mb-4">{t("selectedWorks")}</p>
                     <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tighter text-neutral-900 dark:text-white">
-                        Featured <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">Projects</span>
+                        {t("featured")} <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">{t("projects")}</span>
                     </h2>
                 </div>
 
@@ -59,7 +61,7 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
                         href="/projects"
                         className="group flex items-center gap-2 text-base sm:text-lg font-medium text-neutral-900 dark:text-white hover:opacity-80 transition-opacity"
                     >
-                        View All Archives
+                        {t("archives")}
                         <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
                     </Link>
                 </div>
@@ -82,6 +84,7 @@ function ProjectListItem({
     onHover: () => void;
     onLeave: () => void;
 }) {
+    const t = useTranslations("Projects");
     const ref = useRef(null);
     const isInView = useInView(ref, { amount: 0.5 });
 

@@ -1,0 +1,132 @@
+{
+    "Metadata": {
+        "title": "Samy Hajar | Full Stack Developer",
+        "description": "Portfolio of Samy Hajar, a Full Stack Developer specializing in creating exceptional digital experiences with modern technologies."
+    },
+    "Navigation": {
+        "home": "Home",
+        "projects": "Projects",
+        "about": "About",
+        "contact": "Contact",
+        "bookCall": "Book a Call"
+    },
+    "Hero": {
+        "title": "Samy Hajar",
+        "role": "Full Stack Developer",
+        "iBuild": "I build",
+        "morphingTexts": [
+            "Experiences",
+            "Solutions",
+            "Products",
+            "The Future"
+        ],
+        "description": "I transform thorny problems into elegant solutions using visual design, rapid prototyping, and interaction skills.",
+        "viewProjects": "View Projects"
+    },
+    "ProjectDetail": {
+        "back": "Back to Projects",
+        "overview": "Overview",
+        "techStack": "Tech Stack",
+        "impact": "Impact",
+        "challenges": "Challenges & Solutions",
+        "visitSite": "Visit Site",
+        "code": "Code",
+        "nextProject": "Next Project"
+    },
+    "Contact": {
+        "title": "Let's Work Together",
+        "description": "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.",
+        "getInTouch": "Get In Touch",
+        "downloadResume": "Download Resume"
+    },
+    "Projects": {
+        "selectedWorks": "Selected Works",
+        "featured": "Featured",
+        "projects": "Projects",
+        "archives": "View All Archives",
+        "viewProject": "View Project",
+        "osfs-formation": {
+            "description": "International digital learning and resource platform for global religious formation",
+            "longDescription": "A comprehensive digital formation platform developed for the Oblates of St. Francis de Sales. The portal serves as a global hub for spiritual growth, providing localized resources, curriculum management, and community connection tools.",
+            "role": "Full Stack Developer",
+            "challenges": [
+                "Managing complex internationalization (i18n) workflows for global resource distribution",
+                "Implementing a tiered access system for different formation stages and regions",
+                "Optimizing performance for users in regions with limited bandwidth"
+            ],
+            "outcomes": [
+                "Successfully launched a unified global resource hub for the OSFS community",
+                "Streamlined curriculum distribution across multiple continents",
+                "Achieved sub-second page loads globally through edge optimization on Vercel"
+            ]
+        },
+        "ortho-schuh": {
+            "description": "Secure mobile-wrapped patient portal for pre- and post-operative document sharing",
+            "longDescription": "A specialized medical application developed for Dr. Schuh to manage pre- and post-operative care for over 600 patients. The platform provides a secure, mobile-wrapped experience where patients can access personalized treatment plans, surgical checklists, and exercise videos.",
+            "role": "Full Stack Developer",
+            "challenges": [
+                "Ensuring 100% compliance with German medical data privacy standards while maintaining accessibility",
+                "Designing an intuitive mobile interface for a broad patient demographic (age 20-80+)",
+                "Automating complex document workflows for different surgical procedures"
+            ],
+            "outcomes": [
+                "Successfully streamlined care for over 600 active patients",
+                "Reduced administrative overhead for document sharing by 75%",
+                "Achieved high patient engagement with digital exercise and recovery plans"
+            ]
+        },
+        "werkzeugkiste": {
+            "description": "Advanced LMS for social inclusion with automated PDF certificate generation and progression tracking.",
+            "longDescription": "A robust digital learning platform developed for 'arbeit plus'. It features automated module certificate creation using PDFKit, granular lesson progression tracking, interactive quizzes, and a comprehensive admin backend for dynamic module management.",
+            "role": "Full Stack Developer",
+            "challenges": [
+                "Implementing real-time progress tracking across complex learning paths",
+                "Automating dynamic PDF generation for student certifications",
+                "Building a flexible admin system for modular content creation"
+            ],
+            "outcomes": [
+                "171 Active Learners reached",
+                "274 Certificates successfully generated",
+                "121 Lessons distributed across 28 Courses",
+                "Automated assessment system with 28 Quizzes"
+            ]
+        }
+    },
+    "ContactModal": {
+        "selectTime": "Select a time",
+        "calendlyTitle": "Select a Date & Time - Calendly",
+        "title": "Get in touch",
+        "description": "Let's build something great together.",
+        "bookCall": "Book a call",
+        "callDuration": "30 Min Call",
+        "emailMe": "Email me",
+        "openGmail": "Open Gmail",
+        "copyEmail": "Copy email address"
+    },
+    "Skills": {
+        "title": "My",
+        "subtitle": "Skills",
+        "badge": "Tech Stack",
+        "selectedTech": "Selected Technology",
+        "tapTech": "Tap a technology to see related projects",
+        "projects": "projects",
+        "project": "project",
+        "technology": "Technology",
+        "usedIn": "Used in",
+        "noProjects": "No projects using this technology yet",
+        "hoverTech": "Hover over a technology icon to see projects",
+        "moreProjects": "+ {count} more projects"
+    },
+    "Archives": {
+        "title": "Selected",
+        "subtitle": "Chronicles",
+        "description": "A deep dive into the evolution of my craft. From experimental prototypes to full-scale enterprise solutions.",
+        "badge": "Archive"
+    },
+    "Footer": {
+        "about": "Full Stack Developer passionate about creating exceptional digital experiences.",
+        "quickLinks": "Quick Links",
+        "connect": "Connect",
+        "rights": "All rights reserved."
+    }
+}

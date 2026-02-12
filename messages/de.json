@@ -1,0 +1,133 @@
+{
+    "Metadata": {
+        "title": "Samy Hajar | Full Stack Entwickler",
+        "description": "Portfolio von Samy Hajar, einem Full Stack Entwickler, der darauf spezialisiert ist, außergewöhnliche digitale Erlebnisse mit modernen Technologien zu schaffen."
+    },
+    "Navigation": {
+        "home": "Startseite",
+        "projects": "Projekte",
+        "about": "Über mich",
+        "contact": "Kontakt",
+        "bookCall": "Termin buchen"
+    },
+    "Hero": {
+        "title": "Samy Hajar",
+        "role": "Full Stack Entwickler",
+        "iBuild": "Ich erstelle",
+        "morphingTexts": [
+            "Erlebnisse",
+            "Lösungen",
+            "Produkte",
+            "Die Zukunft"
+        ],
+        "description": "Ich verwandle komplexe Probleme in elegante Lösungen durch visuelles Design, Rapid Prototyping und Interaktionsfähigkeiten.",
+        "viewProjects": "Projekte ansehen"
+    },
+    "ProjectDetail": {
+        "back": "Zurück zu den Projekten",
+        "overview": "Übersicht",
+        "techStack": "Tech Stack",
+        "impact": "Auswirkung",
+        "challenges": "Herausforderungen & Lösungen",
+        "visitSite": "Website besuchen",
+        "code": "Code",
+        "nextProject": "Nächstes Projekt"
+    },
+    "Contact": {
+        "title": "Lassen Sie uns zusammenarbeiten",
+        "description": "Ich bin immer offen für neue Projekte, kreative Ideen oder Möglichkeiten, Teil Ihrer Vision zu sein.",
+        "getInTouch": "Kontakt aufnehmen",
+        "downloadResume": "Lebenslauf herunterladen"
+    },
+    "Projects": {
+        "selectedWorks": "Ausgewählte Arbeiten",
+        "featured": "Ausgewählte",
+        "projects": "Projekte",
+        "archives": "Alle Archive ansehen",
+        "viewProject": "Projekt ansehen",
+        "osfs-formation": {
+            "description": "Internationale digitale Lern- und Ressourcenplattform für globale religiöse Formation",
+            "longDescription": "Eine umfassende digitale Formationsplattform, die für die Oblaten des hl. Franz von Sales entwickelt wurde. Das Portal dient als globales Zentrum für spirituelles Wachstum und bietet lokalisierte Ressourcen, Lehrplanmanagement und Tools zur Gemeinschaftsbildung.",
+            "role": "Full Stack Entwickler",
+            "challenges": [
+                "Verwaltung komplexer Internationalisierungs-Workflow (i18n) für die globale Ressourcenverteilung",
+                "Implementierung eines gestuften Zugangssystems für verschiedene Formationsphasen und Regionen",
+                "Optimierung der Performance für Nutzer in Regionen mit begrenzter Bandbreite"
+            ],
+            "outcomes": [
+                "Erfolgreicher Launch eines einheitlichen globalen Ressourcenzentrums für die OSFS-Gemeinschaft",
+                "Rationalisierung der Lehrplanverteilung über mehrere Kontinente hinweg",
+                "Erreichung von Ladezeiten unter einer Sekunde durch Edge-Optimierung auf Vercel"
+            ]
+        },
+        "ortho-schuh": {
+            "description": "Sicheres patientenorientiertes Mobil-Portal für den Austausch von Dokumenten vor und nach Operationen",
+            "longDescription": "Eine spezialisierte medizinische Anwendung, die für Dr. Schuh entwickelt wurde, um die prä- und postoperative Versorgung von über 600 Patienten zu verwalten. Die Plattform bietet ein sicheres, für Mobilgeräte optimiertes Erlebnis, bei dem Patienten auf personalisierte Behandlungspläne, chirurgische Checklisten und Übungsvideos zugreifen können.",
+            "role": "Full Stack Entwickler",
+            "challenges": [
+                "Gewährleistung der 100%igen Einhaltung deutscher medizinischer Datenschutzstandards bei gleichzeitiger Wahrung der Barrierefreiheit",
+                "Design einer intuitiven mobilen Schnittstelle für eine breite Patientendemografie (Alter 20-80+)",
+                "Automatisierung komplexer Dokumenten-Workflows für verschiedene chirurgische Eingriffe"
+            ],
+            "outcomes": [
+                "Erfolgreiche Rationalisierung der Versorgung von über 600 aktiven Patienten",
+                "Reduzierung des administrativen Aufwands für den Dokumentenaustausch um 75%",
+                "Erreichung eines hohen Patientengagements mit digitalen Übungs- und Erholungsplänen"
+            ]
+        },
+        "werkzeugkiste": {
+            "description": "Fortgeschrittenes LMS für soziale Inklusion mit automatisierter PDF-Zertifikatserstellung und Fortschrittsverfolgung.",
+            "longDescription": "Eine robuste digitale Lernplattform, die für 'arbeit plus' entwickelt wurde. Sie bietet automatisierte Modulzertifikatserstellung mit PDFKit, granulare Fortschrittsverfolgung von Lektionen, interaktive Quizze und ein umfassendes Admin-Backend für dynamisches Modulmanagement.",
+            "role": "Full Stack Entwickler",
+            "challenges": [
+                "Implementierung von Echtzeit-Fortschrittsverfolgung über komplexe Lernpfade hinweg",
+                "Automatisierung der dynamischen PDF-Generierung für Studentenzertifizierungen",
+                "Aufbau eines flexiblen Admin-Systems für die modulare Inhaltserstellung"
+            ],
+            "outcomes": [
+                "171 aktive Lernende erreicht",
+                "274 Zertifikate erfolgreich generiert",
+                "121 Lektionen in 28 Kursen verteilt",
+                "Automatisiertes Bewertungssystem mit 28 Quizzen"
+            ]
+        }
+    },
+    "ContactModal": {
+        "selectTime": "Wählen Sie eine Zeit",
+        "calendlyTitle": "Wählen Sie Datum & Uhrzeit - Calendly",
+        "title": "Kontakt aufnehmen",
+        "description": "Lassen Sie uns gemeinsam etwas Großartiges aufbauen.",
+        "bookCall": "Termin buchen",
+        "callDuration": "30 Min. Gespräch",
+        "emailMe": "E-Mail schreiben",
+        "openGmail": "Gmail öffnen",
+        "copyEmail": "E-Mail-Adresse kopieren"
+    },
+    "Skills": {
+        "title": "Meine",
+        "subtitle": "Fähigkeiten",
+        "badge": "Tech Stack",
+        "selectedTech": "Ausgewählte Technologie",
+        "tapTech": "Tippen Sie auf eine Technologie, um verwandte Projekte zu sehen",
+        "projects": "Projekte",
+        "project": "Projekt",
+        "technology": "Technologie",
+        "usedIn": "Verwendet in",
+        "noProjects": "Noch keine Projekte mit dieser Technologie",
+        "hoverTech": "Fahren Sie mit der Maus über ein Icon, um Projekte zu sehen",
+        "moreProjects": "+ {count} weitere Projekte"
+    },
+    "Archives": {
+        "title": "Ausgewählte",
+        "subtitle": "Chroniken",
+        "description": "Ein tiefer Einblick in die Entwicklung meines Handwerks. Von experimentellen Prototypen bis hin zu umfassenden Unternehmenslösungen.",
+        "badge": "Archiv"
+    },
+    "Footer": {
+        "about": "Full Stack Entwickler mit Leidenschaft für die Erstellung außergewöhnlicher digitaler Erlebnisse.",
+        "quickLinks": "Quick Links",
+        "connect": "Verbinden",
+        "rights": "Alle Rechte vorbehalten."
+    }
+}
+```

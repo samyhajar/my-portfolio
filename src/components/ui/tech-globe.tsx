@@ -27,6 +27,7 @@ import {
     SiDjango
 } from "react-icons/si";
 import { MorphingText } from "./text-morphing";
+import { useTranslations } from "next-intl";
 
 // Tech stack data with official brand icons
 const TECH_STACK = [
@@ -129,6 +130,8 @@ function MobileTechGrid() {
 
 function MobileProjectDisplay() {
     const { hoveredTech } = useContext(HoverContext);
+    const t = useTranslations("Skills");
+    const tProj = useTranslations("Projects");
 
     const relatedProjects = useMemo(() => {
         if (!hoveredTech) return [];
@@ -144,7 +147,7 @@ function MobileProjectDisplay() {
         return (
             <div className="text-center py-8">
                 <p className="text-sm text-neutral-500 dark:text-neutral-400">
-                    Tap a technology to see related projects
+                    {t("tapTech")}
                 </p>
             </div>
         );
@@ -155,7 +158,7 @@ function MobileProjectDisplay() {
             {/* Tech Name */}
             <div className="text-center space-y-1">
                 <p className="text-xs font-bold tracking-widest text-neutral-500 uppercase">
-                    Selected Technology
+                    {t("selectedTech")}
                 </p>
                 <h3
                     className="text-2xl sm:text-3xl font-bold tracking-tight"
@@ -164,7 +167,7 @@ function MobileProjectDisplay() {
                     {hoveredTech.name}
                 </h3>
                 <p className="text-xs text-neutral-500">
-                    {relatedProjects.length} {relatedProjects.length === 1 ? 'project' : 'projects'}
+                    {relatedProjects.length} {relatedProjects.length === 1 ? t("project") : t("projects")}
                 </p>
             </div>
 
@@ -188,7 +191,7 @@ function MobileProjectDisplay() {
                                     {project.title}
                                 </p>
                                 <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2">
-                                    {project.description}
+                                    {tProj(`${project.slug}.description`)}
                                 </p>
                             </div>
                         </div>
@@ -196,7 +199,7 @@ function MobileProjectDisplay() {
                 </div>
             ) : (
                 <p className="text-center text-sm text-neutral-500 dark:text-neutral-400 py-4">
-                    No projects using this technology yet
+                    {t("noProjects")}
                 </p>
             )}
         </div>
@@ -278,6 +281,8 @@ function TechSphere() {
 
 function ProjectDisplay() {
     const { hoveredTech } = useContext(HoverContext);
+    const t = useTranslations("Skills");
+    const tProj = useTranslations("Projects");
 
     // Find projects that use the hovered tech
     const relatedProjects = useMemo(() => {
@@ -299,7 +304,7 @@ function ProjectDisplay() {
                     {/* Tech Name */}
                     <div className="space-y-1 sm:space-y-2">
                         <p className="text-xs sm:text-sm font-bold tracking-widest text-neutral-500 uppercase">
-                            Technology
+                            {t("technology")}
                         </p>
                         <h3
                             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight"
@@ -312,7 +317,7 @@ function ProjectDisplay() {
                     {/* Projects with Morphing Animation */}
                     <div className="space-y-2 sm:space-y-3">
                         <p className="text-xs sm:text-sm font-bold tracking-widest text-neutral-500 uppercase">
-                            Used in
+                            {t("usedIn")}
                         </p>
                         <div className="text-2xl sm:text-3xl md:text-4xl font-semibold text-neutral-900 dark:text-white">
                             <MorphingText
@@ -323,7 +328,7 @@ function ProjectDisplay() {
                             />
                         </div>
                         <p className="text-xs sm:text-sm text-neutral-500">
-                            {relatedProjects.length} {relatedProjects.length === 1 ? 'project' : 'projects'}
+                            {relatedProjects.length} {relatedProjects.length === 1 ? t("project") : t("projects")}
                         </p>
                     </div>
 
@@ -346,14 +351,14 @@ function ProjectDisplay() {
                                         {project.title}
                                     </p>
                                     <p className="text-xs text-neutral-600 dark:text-neutral-400 line-clamp-2">
-                                        {project.description}
+                                        {tProj(`${project.slug}.description`)}
                                     </p>
                                 </div>
                             </div>
                         ))}
                         {relatedProjects.length > 3 && (
                             <p className="text-xs sm:text-sm text-neutral-500 italic pl-4 sm:pl-5">
-                                + {relatedProjects.length - 3} more projects
+                                {t("moreProjects", { count: relatedProjects.length - 3 })}
                             </p>
                         )}
                     </div>
@@ -361,7 +366,7 @@ function ProjectDisplay() {
             ) : (
                 <div className="space-y-4 text-center lg:text-left">
                     <p className="text-sm sm:text-base lg:text-lg text-neutral-500 dark:text-neutral-400">
-                        Hover over a technology icon to see projects
+                        {t("hoverTech")}
                     </p>
                 </div>
             )}
@@ -385,6 +390,7 @@ function TechGlobeLighting() {
 export function TechGlobe() {
     const [hoveredTech, setHoveredTech] = useState<typeof TECH_STACK[number] | null>(null);
     const [isMobile, setIsMobile] = useState(false);
+    const t = useTranslations("Skills");
 
     useEffect(() => {
         const checkMobile = () => setIsMobile(window.innerWidth < 1024);
@@ -398,9 +404,9 @@ export function TechGlobe() {
             <section id="skills" className="min-h-screen w-full bg-neutral-50 dark:bg-neutral-950 relative overflow-hidden py-16 lg:py-0">
                 {/* Section Header */}
                 <div className="relative lg:absolute top-0 lg:top-20 left-0 right-0 z-10 text-center space-y-2 lg:space-y-4 px-4 mb-8 lg:mb-0 pointer-events-none">
-                    <p className="text-xs sm:text-sm font-bold tracking-widest text-neutral-500 uppercase">Tech Stack</p>
+                    <p className="text-xs sm:text-sm font-bold tracking-widest text-neutral-500 uppercase">{t("badge")}</p>
                     <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold tracking-tighter text-neutral-900 dark:text-white drop-shadow-sm">
-                        My <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 animate-gradient-x">Skills</span>
+                        {t("title")} <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-pink-500 to-blue-500 animate-gradient-x">{t("subtitle")}</span>
                     </h2>
                 </div>
 

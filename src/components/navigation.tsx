@@ -8,8 +8,11 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useLenis } from "@/components/smooth-scroll";
 import { ContactModal } from "@/components/ui/contact-modal";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { useTranslations } from "next-intl";
+import { LanguageSwitcher } from "./language-switcher";
 
 export function Navigation() {
+    const t = useTranslations("Navigation");
     const [isOpen, setIsOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
     const [isScrolled, setIsScrolled] = useState(false);
@@ -17,10 +20,10 @@ export function Navigation() {
     const { scrollY } = useScroll();
 
     const links = [
-        { href: "#home", label: "Home", id: "home" },
-        { href: "#projects", label: "Projects", id: "projects" },
-        { href: "#skills", label: "Skills", id: "skills" },
-        { href: "#contact", label: "Contact", id: "contact" },
+        { href: "#home", label: t("home"), id: "home" },
+        { href: "#projects", label: t("projects"), id: "projects" },
+        { href: "#skills", label: t("about"), id: "skills" }, // Using 'about' for skills/about section
+        { href: "#contact", label: t("contact"), id: "contact" },
     ];
 
     // Track scroll position for navbar background
@@ -181,7 +184,16 @@ export function Navigation() {
                     </div>
 
                     {/* CTA and Mobile Toggle - Column 3 */}
-                    <div className="flex items-center justify-end gap-4">
+                    <div className="flex items-center justify-end gap-2 sm:gap-4">
+                        {/* Language Switcher */}
+                        <div className="hidden sm:block">
+                            <LanguageSwitcher />
+                        </div>
+
+                        <div className="hidden sm:block">
+                            <ThemeToggle />
+                        </div>
+
                         {/* CTA Button */}
                         <motion.div
                             initial={{ opacity: 0, x: 20 }}
@@ -194,12 +206,13 @@ export function Navigation() {
                                     size="lg"
                                     className="rounded-full bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 hover:bg-neutral-800 dark:hover:bg-neutral-200 px-8 py-6 text-lg font-semibold shadow-xl hover:scale-105 transition-all"
                                 >
-                                    Book a Call
+                                    {t("bookCall")}
                                 </Button>
                             </ContactModal>
                         </motion.div>
 
-                        <div className="md:hidden">
+                        <div className="sm:hidden flex items-center gap-2">
+                            <LanguageSwitcher />
                             <ThemeToggle />
                         </div>
 
@@ -266,11 +279,11 @@ export function Navigation() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : 20 }}
                             transition={{ duration: 0.4, delay: isOpen ? 0.1 + links.length * 0.1 : 0 }}
-                            className="pt-8"
+                            className="pt-8 flex flex-col items-center gap-4"
                         >
                             <ContactModal>
                                 <Button size="lg" className="rounded-full px-8 text-lg" onClick={() => setIsOpen(false)}>
-                                    Book a Call
+                                    {t("bookCall")}
                                 </Button>
                             </ContactModal>
                         </motion.div>

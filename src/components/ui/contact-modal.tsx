@@ -7,6 +7,7 @@ import { Calendar, Mail, Check, Copy, ArrowLeft } from "lucide-react";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
 
 export function ContactModal({ children }: { children: React.ReactNode }) {
     const [copied, setCopied] = useState(false);
@@ -14,6 +15,7 @@ export function ContactModal({ children }: { children: React.ReactNode }) {
     const email = "samy.hajar@gmail.com";
     const { resolvedTheme } = useTheme();
     const [calendlyUrl, setCalendlyUrl] = useState("");
+    const t = useTranslations("ContactModal");
 
     useEffect(() => {
         const theme = resolvedTheme === "dark" ? "dark" : "light";
@@ -69,7 +71,7 @@ export function ContactModal({ children }: { children: React.ReactNode }) {
                                     >
                                         <ArrowLeft className="w-5 h-5" />
                                     </Button>
-                                    <h3 className="text-xl font-bold">Select a time</h3>
+                                    <h3 className="text-xl font-bold">{t("selectTime")}</h3>
                                 </div>
                                 <div className="flex-1 w-full bg-neutral-50 dark:bg-neutral-800 rounded-xl overflow-hidden">
                                     <iframe
@@ -77,7 +79,7 @@ export function ContactModal({ children }: { children: React.ReactNode }) {
                                         width="100%"
                                         height="100%"
                                         frameBorder="0"
-                                        title="Select a Date & Time - Calendly"
+                                        title={t("calendlyTitle")}
                                     ></iframe>
                                 </div>
                             </motion.div>
@@ -92,10 +94,10 @@ export function ContactModal({ children }: { children: React.ReactNode }) {
                             >
                                 <DialogHeader className="space-y-3 text-left">
                                     <DialogTitle className="text-4xl sm:text-5xl font-bold tracking-tighter">
-                                        Get in touch
+                                        {t("title")}
                                     </DialogTitle>
                                     <p className="text-neutral-500 dark:text-neutral-400 text-base sm:text-lg">
-                                        Let's build something great together.
+                                        {t("description")}
                                     </p>
                                 </DialogHeader>
 
@@ -109,8 +111,8 @@ export function ContactModal({ children }: { children: React.ReactNode }) {
                                             <Calendar className="w-5 h-5" />
                                         </div>
                                         <div>
-                                            <p className="font-semibold text-neutral-900 dark:text-white">Book a call</p>
-                                            <p className="text-xs text-neutral-500 dark:text-neutral-400 font-medium uppercase tracking-wider mt-1">30 Min Call</p>
+                                            <p className="font-semibold text-neutral-900 dark:text-white">{t("bookCall")}</p>
+                                            <p className="text-xs text-neutral-500 dark:text-neutral-400 font-medium uppercase tracking-wider mt-1">{t("callDuration")}</p>
                                         </div>
                                     </button>
 
@@ -125,8 +127,8 @@ export function ContactModal({ children }: { children: React.ReactNode }) {
                                             <Mail className="w-5 h-5" />
                                         </div>
                                         <div>
-                                            <p className="font-semibold text-neutral-900 dark:text-white">Email me</p>
-                                            <p className="text-xs text-neutral-500 dark:text-neutral-400 font-medium uppercase tracking-wider mt-1">Open Gmail</p>
+                                            <p className="font-semibold text-neutral-900 dark:text-white">{t("emailMe")}</p>
+                                            <p className="text-xs text-neutral-500 dark:text-neutral-400 font-medium uppercase tracking-wider mt-1">{t("openGmail")}</p>
                                         </div>
                                     </a>
                                 </div>
@@ -159,7 +161,7 @@ export function ContactModal({ children }: { children: React.ReactNode }) {
                                                 )}
                                             </AnimatePresence>
                                         </div>
-                                        <span>Copy email address</span>
+                                        <span>{t("copyEmail")}</span>
                                     </button>
 
                                     <div className="flex items-center gap-4">

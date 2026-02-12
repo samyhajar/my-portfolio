@@ -3,13 +3,14 @@ import { getProjectBySlug, projects } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import * as motion from "framer-motion/client";
 import { ProjectImage3D } from "@/components/ui/project-image-3d";
 import { ProjectCarousel } from "@/components/ui/project-carousel";
 import { ProjectNavigation } from "@/components/project-navigation";
 import { TechIcon } from "@/components/ui/tech-icon";
+import { getTranslations } from "next-intl/server";
 
 export async function generateStaticParams() {
     return projects.map((project) => ({
@@ -18,16 +19,28 @@ export async function generateStaticParams() {
 }
 
 interface ProjectPageProps {
-    params: Promise<{ slug: string }>;
+    params: Promise<{ slug: string; locale: string }>;
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
-    const { slug } = await params;
+    const { slug, locale } = await params;
     const project = getProjectBySlug(slug);
 
     if (!project) {
         notFound();
     }
+
+    const t = await getTranslations({ locale, namespace: "ProjectDetail" });
+    const tProj = await getTranslations({ locale, namespace: "Projects" });
+
+    // Get localized project info
+    const localizedProject = {
+        description: tProj(`${project.slug}.description`),
+        longDescription: tProj(`${project.slug}.longDescription`),
+        role: tProj(`${project.slug}.role`),
+        challenges: tProj.raw(`${project.slug}.challenges`) as string[],
+        outcomes: tProj.raw(`${project.slug}.outcomes`) as string[],
+    };
 
     // Determine next project
     const currentIndex = projects.findIndex(p => p.slug === slug);
@@ -52,7 +65,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     className="inline-flex items-center gap-2 text-sm font-medium text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors group"
                                 >
                                     <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-                                    Back to Projects
+                                    {t("back")}
                                 </Link>
                             </motion.div>
 
@@ -68,7 +81,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                         {project.year}
                                     </span>
                                     <span className="px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 text-xs font-mono uppercase tracking-wider">
-                                        {project.role}
+                                        {localizedProject.role}
                                     </span>
                                 </motion.div>
 
@@ -87,7 +100,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     transition={{ duration: 0.5, delay: 0.3 }}
                                     className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 max-w-xl leading-relaxed"
                                 >
-                                    {project.description}
+                                    {localizedProject.description}
                                 </motion.p>
                             </div>
 
@@ -116,9 +129,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                 transition={{ duration: 0.5 }}
                                 className="md:col-span-2 p-8 rounded-3xl bg-white/5 dark:bg-neutral-900/50 backdrop-blur-md border border-neutral-200 dark:border-neutral-800 space-y-4"
                             >
-                                <h3 className="text-sm font-mono uppercase tracking-wider text-neutral-500">Overview</h3>
+                                <h3 className="text-sm font-mono uppercase tracking-wider text-neutral-500">{t("overview")}</h3>
                                 <p className="text-xl md:text-2xl font-light leading-relaxed text-neutral-800 dark:text-neutral-200">
-                                    {project.longDescription}
+                                    {localizedProject.longDescription}
                                 </p>
                             </motion.div>
 
@@ -130,7 +143,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                 transition={{ duration: 0.5, delay: 0.1 }}
                                 className="p-8 rounded-3xl bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 space-y-6"
                             >
-                                <h3 className="text-sm font-mono uppercase tracking-wider text-neutral-500">Tech Stack</h3>
+                                <h3 className="text-sm font-mono uppercase tracking-wider text-neutral-500">{t("techStack")}</h3>
                                 <div className="flex flex-wrap gap-2">
                                     {project.technologies.map((tech) => (
                                         <span
@@ -145,7 +158,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                             </motion.div>
 
                             {/* Metrics/Impact Card */}
-                            {project.outcomes && (
+                            {localizedProject.outcomes && (
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
@@ -153,9 +166,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     transition={{ duration: 0.5, delay: 0.2 }}
                                     className="p-8 rounded-3xl bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 space-y-6"
                                 >
-                                    <h3 className="text-sm font-mono uppercase tracking-wider opacity-70">Impact</h3>
+                                    <h3 className="text-sm font-mono uppercase tracking-wider opacity-70">{t("impact")}</h3>
                                     <ul className="space-y-4">
-                                        {project.outcomes.map((outcome, idx) => (
+                                        {localizedProject.outcomes.map((outcome, idx) => (
                                             <li key={idx} className="flex gap-3 items-start">
                                                 <span className="text-xl">⚡</span>
                                                 <span className="font-medium leading-tight">{outcome}</span>
@@ -166,7 +179,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                             )}
 
                             {/* Challenges Card - Spans 2 cols */}
-                            {project.challenges && (
+                            {localizedProject.challenges && (
                                 <motion.div
                                     initial={{ opacity: 0, y: 20 }}
                                     whileInView={{ opacity: 1, y: 0 }}
@@ -174,9 +187,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     transition={{ duration: 0.5, delay: 0.3 }}
                                     className="md:col-span-2 p-8 rounded-3xl bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-950 border border-neutral-200 dark:border-neutral-800 space-y-6"
                                 >
-                                    <h3 className="text-sm font-mono uppercase tracking-wider text-neutral-500">Challenges & Solutions</h3>
+                                    <h3 className="text-sm font-mono uppercase tracking-wider text-neutral-500">{t("challenges")}</h3>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        {project.challenges.map((challenge, idx) => (
+                                        {localizedProject.challenges.map((challenge, idx) => (
                                             <div key={idx} className="space-y-2">
                                                 <div className="text-xs font-mono text-neutral-400">0{idx + 1}</div>
                                                 <p className="text-lg font-medium text-neutral-800 dark:text-neutral-200">
@@ -205,14 +218,14 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 {project.demo && (
                     <Button asChild size="lg" className="rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:opacity-90 transition-opacity">
                         <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                            Visit Site <ExternalLink className="ml-2 w-4 h-4" />
+                            {t("visitSite")} <ExternalLink className="ml-2 w-4 h-4" />
                         </a>
                     </Button>
                 )}
                 {project.github && (
                     <Button asChild variant="ghost" size="lg" className="rounded-full hover:bg-white/10 dark:hover:bg-neutral-900/20">
                         <a href={project.github} target="_blank" rel="noopener noreferrer">
-                            <Github className="mr-2 w-4 h-4" /> Code
+                            <Github className="mr-2 w-4 h-4" /> {t("code")}
                         </a>
                     </Button>
                 )}

@@ -1,4 +1,8 @@
+import { useTranslations } from "next-intl";
+
 export function Footer() {
+    const t = useTranslations("Footer");
+    const tNav = useTranslations("Navigation");
     const currentYear = new Date().getFullYear();
 
     return (
@@ -9,27 +13,27 @@ export function Footer() {
                     <div className="space-y-4">
                         <h3 className="font-bold text-lg">Samy Hajar</h3>
                         <p className="text-sm text-neutral-700 dark:text-neutral-300">
-                            Full Stack Developer passionate about creating exceptional digital experiences.
+                            {t("about")}
                         </p>
                     </div>
 
                     {/* Quick Links */}
                     <div className="space-y-4">
-                        <h3 className="font-bold text-lg">Quick Links</h3>
+                        <h3 className="font-bold text-lg">{t("quickLinks")}</h3>
                         <ul className="space-y-2 text-sm">
                             <li>
                                 <a href="/#projects" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
-                                    Projects
+                                    {tNav("projects")}
                                 </a>
                             </li>
                             <li>
                                 <a href="/#skills" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
-                                    Skills
+                                    {tNav("about")}
                                 </a>
                             </li>
                             <li>
                                 <a href="/#contact" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
-                                    Contact
+                                    {tNav("contact")}
                                 </a>
                             </li>
                         </ul>
@@ -37,7 +41,7 @@ export function Footer() {
 
                     {/* Connect */}
                     <div className="space-y-4">
-                        <h3 className="font-bold text-lg">Connect</h3>
+                        <h3 className="font-bold text-lg">{t("connect")}</h3>
                         <ul className="space-y-2 text-sm">
                             <li>
                                 <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors" aria-label="Visit GitHub Profile">
@@ -59,7 +63,7 @@ export function Footer() {
                 </div>
 
                 <div className="mt-12 pt-8 border-t border-neutral-200 dark:border-neutral-800 text-center text-sm text-neutral-600 dark:text-neutral-400">
-                    <p>© {currentYear} Samy Hajar. All rights reserved.</p>
+                    <p>© {currentYear} Samy Hajar. {t("rights")}</p>
                 </div>
             </div>
         </footer>
