@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { SiGithub, SiLinkedin, SiInstagram } from "react-icons/si";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 export function GlobalSidebars() {
     return (
@@ -22,10 +21,6 @@ export function GlobalSidebars() {
                     <div className="h-16 w-[1px] bg-gradient-to-b from-transparent via-neutral-300 dark:via-neutral-600 to-transparent" />
                 </div>
 
-                {/* Theme Toggle */}
-                <div className="mt-4">
-                    <ThemeToggle />
-                </div>
             </motion.div>
 
             {/* Right Sidebar - Social Links */}
