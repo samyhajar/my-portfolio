@@ -174,12 +174,12 @@ export function GooeyText({
 
       <div
         className="relative flex items-center justify-center w-full h-full"
-        style={{ filter: "url(#threshold)" }}
+        style={{ filter: typeof window !== 'undefined' && window.innerWidth < 768 ? 'none' : "url(#threshold)" }}
       >
         <span
           ref={text1Ref}
           className={cn(
-            "absolute inline-block select-none text-center text-5xl md:text-7xl font-bold",
+            "absolute inline-block select-none text-center text-5xl md:text-7xl font-bold will-change-[filter,opacity]",
             "text-foreground",
             textClassName,
           )}

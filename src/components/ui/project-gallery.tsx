@@ -24,8 +24,8 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
             <div className="hidden md:block relative h-[500vh]" ref={targetRef}>
                 <div className="sticky top-0 h-screen flex items-center overflow-hidden">
                     <motion.div style={{ x }} className="flex gap-16 px-24">
-                        {projects.map((project) => (
-                            <DesktopProjectCard key={project.slug} project={project} />
+                        {projects.map((project, i) => (
+                            <DesktopProjectCard key={project.slug} project={project} index={i} />
                         ))}
                     </motion.div>
                 </div>
@@ -41,7 +41,7 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
     );
 }
 
-function DesktopProjectCard({ project }: { project: Project }) {
+function DesktopProjectCard({ project, index }: { project: Project; index: number }) {
     return (
         <Link href={`/projects/${project.slug}`} className="group relative w-[800px] h-[500px] flex-shrink-0 block">
             <div className="absolute inset-0 bg-neutral-100 dark:bg-neutral-900 rounded-3xl overflow-hidden shadow-sm group-hover:shadow-2xl transition-all duration-500 border border-neutral-200 dark:border-neutral-800">
@@ -50,6 +50,8 @@ function DesktopProjectCard({ project }: { project: Project }) {
                     alt={project.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                    priority={index === 0 || index === 1}
                 />
 
                 {/* Overlay Gradient */}
@@ -84,6 +86,8 @@ function MobileProjectCard({ project, index }: { project: Project; index: number
                     alt={project.title}
                     fill
                     className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                    priority={index === 0}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 <div className="absolute bottom-6 left-6">

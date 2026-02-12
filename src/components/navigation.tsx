@@ -209,6 +209,8 @@ export function Navigation() {
                             size="icon"
                             className="md:hidden"
                             onClick={() => setIsOpen(!isOpen)}
+                            aria-label={isOpen ? "Close menu" : "Open menu"}
+                            aria-expanded={isOpen}
                         >
                             <motion.div
                                 animate={{ rotate: isOpen ? 90 : 0 }}
@@ -235,6 +237,7 @@ export function Navigation() {
                     <button
                         onClick={() => setIsOpen(false)}
                         className="absolute top-6 right-4 p-2 text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                        aria-label="Close menu"
                     >
                         <X className="w-8 h-8" />
                     </button>
@@ -249,7 +252,7 @@ export function Navigation() {
                                 transition={{ duration: 0.4, delay: isOpen ? 0.1 + index * 0.1 : 0 }}
                                 className={`text-3xl sm:text-4xl font-bold tracking-tight transition-colors ${activeSection === link.id
                                     ? "text-neutral-900 dark:text-white"
-                                    : "text-neutral-400 dark:text-neutral-500 hover:text-neutral-900 dark:hover:text-white"
+                                    : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
                                     }`}
                                 onClick={() => {
                                     setIsOpen(false);

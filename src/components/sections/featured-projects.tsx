@@ -20,8 +20,8 @@ export function FeaturedProjects({ projects }: FeaturedProjectsProps) {
 
     return (
         <section id="projects" className="relative py-16 sm:py-24 lg:py-32 px-4 sm:px-6 min-h-[80vh] flex items-center overflow-hidden">
-            {/* WebGL Background Layer */}
-            <div className="absolute inset-0 z-0">
+            {/* WebGL Background Layer (Hidden on mobile for performance) */}
+            <div className="absolute inset-0 z-0 hidden md:block">
                 {/* Only render if we have an active image to avoid empty canvas issues or keep valid fallback */}
                 {activeImage && (
                     <div key={activeImage} className="w-full h-full animate-in fade-in duration-700">

@@ -1,4 +1,9 @@
 import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Samy Hajar | Full Stack Developer",
+  description: "Portfolio of Samy Hajar, a Full Stack Developer specializing in creating exceptional digital experiences with modern technologies.",
+};
 import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";

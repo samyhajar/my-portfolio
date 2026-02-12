@@ -3,7 +3,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronDown } from "lucide-react";
-import { SiGithub, SiLinkedin, SiInstagram } from "react-icons/si";
 import { motion, Variants } from "framer-motion";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -14,8 +13,8 @@ const containerVariants: Variants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.1,
-            delayChildren: 0.2,
+            staggerChildren: 0.05,
+            delayChildren: 0.1,
         },
     },
 };
@@ -55,7 +54,7 @@ export function Hero() {
                         <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-tighter text-neutral-900 dark:text-white break-words">
                             Samy Hajar
                         </h1>
-                        <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-neutral-500 dark:text-neutral-400 mt-3 sm:mt-4 font-medium tracking-[0.15em] sm:tracking-[0.2em] uppercase">
+                        <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-neutral-600 dark:text-neutral-300 mt-3 sm:mt-4 font-medium tracking-[0.15em] sm:tracking-[0.2em] uppercase">
                             Full Stack Developer
                         </p>
                     </motion.div>
@@ -63,7 +62,7 @@ export function Hero() {
                     {/* Right Column - Morphing Sentence */}
                     <motion.div variants={itemVariants} className="flex-1 w-full lg:min-w-0 flex justify-center lg:justify-start overflow-visible">
                         <div className="flex flex-col items-start gap-0 sm:gap-2 pl-4 sm:pl-0">
-                            <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-apple text-neutral-400 dark:text-neutral-500 shrink-0 italic -mb-4 sm:-mb-8 lg:-mb-14 -ml-4 sm:-ml-8 lg:-ml-12 drop-shadow-[0_0_15px_rgba(163,163,163,0.3)] dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all duration-300">
+                            <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-apple text-neutral-500 dark:text-neutral-400 shrink-0 italic -mb-4 sm:-mb-8 lg:-mb-14 -ml-4 sm:-ml-8 lg:-ml-12 drop-shadow-[0_0_15px_rgba(163,163,163,0.3)] dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all duration-300">
                                 I build
                             </span>
                             <div className="h-[50px] sm:h-[60px] md:h-[75px] lg:h-[90px] w-[280px] sm:w-[400px] lg:w-[600px] flex items-center justify-start overflow-visible">
@@ -83,7 +82,7 @@ export function Hero() {
                 {/* Description */}
                 <motion.p
                     variants={itemVariants}
-                    className="text-sm sm:text-base md:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto leading-relaxed mt-8 sm:mt-12 lg:mt-16 text-center px-4"
+                    className="text-sm sm:text-base md:text-lg text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto leading-relaxed mt-8 sm:mt-12 lg:mt-16 text-center px-4"
                 >
                     I transform thorny problems into elegant solutions using visual design, rapid prototyping, and interaction skills.
                 </motion.p>
@@ -116,7 +115,8 @@ export function Hero() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1, duration: 0.6, repeat: Infinity, repeatType: "reverse", repeatDelay: 1 }}
-                className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
+                className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors cursor-pointer"
+                aria-label="Scroll to Projects"
             >
                 <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 animate-bounce" />
             </motion.button>

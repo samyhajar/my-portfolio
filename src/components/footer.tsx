@@ -8,7 +8,7 @@ export function Footer() {
                     {/* About */}
                     <div className="space-y-4">
                         <h3 className="font-bold text-lg">Samy Hajar</h3>
-                        <p className="text-sm text-neutral-600 dark:text-neutral-400">
+                        <p className="text-sm text-neutral-700 dark:text-neutral-300">
                             Full Stack Developer passionate about creating exceptional digital experiences.
                         </p>
                     </div>
@@ -40,12 +40,12 @@ export function Footer() {
                         <h3 className="font-bold text-lg">Connect</h3>
                         <ul className="space-y-2 text-sm">
                             <li>
-                                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+                                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors" aria-label="Visit GitHub Profile">
                                     GitHub
                                 </a>
                             </li>
                             <li>
-                                <a href="https://www.linkedin.com/in/samy-hajar-116137182/" target="_blank" rel="noopener noreferrer" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+                                <a href="https://www.linkedin.com/in/samy-hajar-116137182/" target="_blank" rel="noopener noreferrer" className="text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors" aria-label="Visit LinkedIn Profile">
                                     LinkedIn
                                 </a>
                             </li>
