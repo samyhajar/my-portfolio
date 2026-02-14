@@ -90,6 +90,36 @@
                 "121 Lektionen in 28 Kursen verteilt",
                 "Automatisiertes Bewertungssystem mit 28 Quizzen"
             ]
+        },
+        "ai-recipe-generator": {
+            "description": "KI-gestützte Plattform zur Rezeptgenerierung mit personalisierter Mahlzeitenplanung",
+            "longDescription": "Eine umfassende KI-gestützte Rezeptgenerierungs-Plattform, die personalisierte Mahlzeitenpläne basierend auf Ernährungspräferenzen, verfügbaren Zutaten und Ernährungszielen erstellt. Zu den Funktionen gehören die Rezeptgenerierung in Echtzeit, Vorschläge für den Ersatz von Zutaten und Kalender für die Mahlzeitplanung.",
+            "role": "Full Stack Entwickler",
+            "challenges": [
+                "Implementierung von effizientem KI-Prompt-Engineering für konsistente Rezeptqualität",
+                "Entwurf eines skalierbaren Datenbankschemas für die Rezeptspeicherung und Benutzerpräferenzen",
+                "Optimierung der API-Kosten bei gleichzeitiger Beibehaltung schneller Antwortzeiten"
+            ],
+            "outcomes": [
+                "Über 10.000 einzigartige Rezepte für Benutzer generiert",
+                "95% Benutzerzufriedenheit erreicht",
+                "Durchschnittliche Zeit für die Mahlzeitenplanung um 60% reduziert"
+            ]
+        },
+        "mining-dashboard": {
+            "description": "Industrielles IoT-Dashboard für die Überwachung von Bergbauausrüstung in Echtzeit",
+            "longDescription": "Ein industrielles IoT-Dashboard zur Echtzeit-Überwachung von Bergbauausrüstung und -abläufen. Bietet kritische Einblicke in den Gerätezustand, Produktionskennzahlen, Sicherheitswarnungen und Empfehlungen für die vorausschauende Wartung.",
+            "role": "Full Stack Entwickler",
+            "challenges": [
+                "Verarbeitung von Hochfrequenz-Sensordaten von über 100 Geräten",
+                "Sicherstellung der Systemzuverlässigkeit in rauen Industrieumgebungen",
+                "Erstellung handlungsrelevanter Warnungen aus komplexen Datenmustern"
+            ],
+            "outcomes": [
+                "Ausfallzeiten der Ausrüstung um 35 % reduziert",
+                "Reaktionszeit bei Sicherheitsvorfällen um 50 % verbessert",
+                "Jährliche Einsparung von 2 Mio. USD an Wartungskosten"
+            ]
         }
     },
     "ContactModal": {
@@ -130,4 +160,3 @@
         "rights": "Alle Rechte vorbehalten."
     }
 }
-```

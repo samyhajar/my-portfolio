@@ -13,9 +13,13 @@ import { TechIcon } from "@/components/ui/tech-icon";
 import { getTranslations } from "next-intl/server";
 
 export async function generateStaticParams() {
-    return projects.map((project) => ({
-        slug: project.slug,
-    }));
+    const locales = ['en', 'de', 'fr', 'es'];
+    return locales.flatMap((locale) =>
+        projects.map((project) => ({
+            locale,
+            slug: project.slug,
+        }))
+    );
 }
 
 interface ProjectPageProps {
@@ -33,13 +37,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     const t = await getTranslations({ locale, namespace: "ProjectDetail" });
     const tProj = await getTranslations({ locale, namespace: "Projects" });
 
-    // Get localized project info
+    // Get localized project info with fallbacks
+    const challengesRaw = tProj.raw(`${project.slug}.challenges`);
+    const outcomesRaw = tProj.raw(`${project.slug}.outcomes`);
+
     const localizedProject = {
         description: tProj(`${project.slug}.description`),
         longDescription: tProj(`${project.slug}.longDescription`),
         role: tProj(`${project.slug}.role`),
-        challenges: tProj.raw(`${project.slug}.challenges`) as string[],
-        outcomes: tProj.raw(`${project.slug}.outcomes`) as string[],
+        challenges: Array.isArray(challengesRaw) ? challengesRaw : (project.challenges || []),
+        outcomes: Array.isArray(outcomesRaw) ? outcomesRaw : (project.outcomes || []),
     };
 
     // Determine next project

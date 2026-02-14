@@ -43,7 +43,7 @@ export function ProjectNavigation({ nextProject }: ProjectNavigationProps) {
                             {nextProject.title}
                         </h2>
                         <p className="text-white/60 max-w-md mx-auto hidden md:block">
-                            {tProj(`${nextProject.slug}.description`)}
+                            {tProj(`${nextProject.slug}.description`) || nextProject.description}
                         </p>
                         <div className="flex items-center justify-center gap-2 text-white">
                             <span className="font-medium">View Case Study</span>

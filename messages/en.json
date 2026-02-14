@@ -90,6 +90,36 @@
                 "121 Lessons distributed across 28 Courses",
                 "Automated assessment system with 28 Quizzes"
             ]
+        },
+        "ai-recipe-generator": {
+            "description": "AI-powered recipe generation platform with personalized meal planning",
+            "longDescription": "A comprehensive AI-powered recipe generation platform that creates personalized meal plans based on dietary preferences, available ingredients, and nutritional goals. Features include real-time recipe generation, ingredient substitution suggestions, and meal planning calendars.",
+            "role": "Full Stack Developer",
+            "challenges": [
+                "Implementing efficient AI prompt engineering for consistent recipe quality",
+                "Designing a scalable database schema for recipe storage and user preferences",
+                "Optimizing API costs while maintaining fast response times"
+            ],
+            "outcomes": [
+                "Generated over 10,000 unique recipes for users",
+                "Achieved 95% user satisfaction rate",
+                "Reduced average meal planning time by 60%"
+            ]
+        },
+        "mining-dashboard": {
+            "description": "Industrial IoT dashboard for real-time mining equipment monitoring",
+            "longDescription": "An industrial-grade IoT dashboard for monitoring mining equipment and operations in real-time. Provides critical insights into equipment health, production metrics, safety alerts, and predictive maintenance recommendations.",
+            "role": "Full Stack Developer",
+            "challenges": [
+                "Processing high-frequency sensor data from 100+ devices",
+                "Ensuring system reliability in harsh industrial environments",
+                "Creating actionable alerts from complex data patterns"
+            ],
+            "outcomes": [
+                "Reduced equipment downtime by 35%",
+                "Improved safety incident response time by 50%",
+                "Saved $2M annually in maintenance costs"
+            ]
         }
     },
     "ContactModal": {

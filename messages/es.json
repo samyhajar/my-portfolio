@@ -90,6 +90,36 @@
                 "121 lecciones distribuidas en 28 cursos",
                 "Sistema de evaluación automatizado con 28 cuestionarios"
             ]
+        },
+        "ai-recipe-generator": {
+            "description": "Plataforma de generación de recetas impulsada por IA con planificación de comidas personalizada",
+            "longDescription": "Una plataforma integral de generación de recetas impulsada por IA que crea planes de comidas personalizados basados en preferencias dietéticas, ingredientes disponibles y objetivos nutricionales. Las características incluyen generación de recetas en tiempo real, sugerencias de sustitución de ingredientes y calendarios de planificación de comidas.",
+            "role": "Desarrollador Full Stack",
+            "challenges": [
+                "Implementación de ingeniería de prompts de IA eficiente para una calidad de receta constante",
+                "Diseño de un esquema de base de datos escalable para el almacenamiento de recetas y preferencias de usuario",
+                "Optimización de los costes de API manteniendo tiempos de respuesta rápidos"
+            ],
+            "outcomes": [
+                "Generó más de 10.000 recetas únicas para los usuarios",
+                "Se logró una tasa de satisfacción del usuario del 95%",
+                "Reducción del tiempo medio de planificación de comidas en un 60%"
+            ]
+        },
+        "mining-dashboard": {
+            "description": "Cuadro de mando IoT industrial para la monitorización de equipos mineros en tiempo real",
+            "longDescription": "Un panel de control IoT de grado industrial para supervisar los equipos y las operaciones mineras en tiempo real. Proporciona información crítica sobre el estado de los equipos, métricas de producción, alertas de seguridad y recomendaciones de mantenimiento predictivo.",
+            "role": "Desarrollador Full Stack",
+            "challenges": [
+                "Procesamiento de datos de sensores de alta frecuencia de más de 100 dispositivos",
+                "Garantizar la fiabilidad del sistema en entornos industriales hostiles",
+                "Creación de alertas accionables a partir de patrones de datos complejos"
+            ],
+            "outcomes": [
+                "Reducción del tiempo de inactividad de los equipos en un 35%",
+                "Mejora del tiempo de respuesta ante incidentes de seguridad en un 50%",
+                "Ahorro de 2 millones de dólares anuales en costes de mantenimiento"
+            ]
         }
     },
     "ContactModal": {

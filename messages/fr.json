@@ -90,6 +90,36 @@
                 "121 leçons distribuées sur 28 cours",
                 "Système d'évaluation automatisé avec 28 quiz"
             ]
+        },
+        "ai-recipe-generator": {
+            "description": "Plateforme de génération de recettes par IA avec planification de repas personnalisée",
+            "longDescription": "Une plateforme complète de génération de recettes alimentée par l'IA qui crée des plans de repas personnalisés en fonction des préférences alimentaires, des ingrédients disponibles et des objectifs nutritionnels. Les fonctionnalités incluent la génération de recettes en temps réel, des suggestions de substitution d'ingrédients et des calendriers de planification des repas.",
+            "role": "Développeur Full Stack",
+            "challenges": [
+                "Mise en œuvre d'une ingénierie de prompt IA efficace pour une qualité de recette constante",
+                "Conception d'un schéma de base de données évolutif pour le stockage des recettes et les préférences des utilisateurs",
+                "Optimisation des coûts d'API tout en maintenant des temps de réponse rapides"
+            ],
+            "outcomes": [
+                "Génération de plus de 10 000 recettes uniques pour les utilisateurs",
+                "Atteinte d'un taux de satisfaction utilisateur de 95 %",
+                "Réduction du temps moyen de planification des repas de 60 %"
+            ]
+        },
+        "mining-dashboard": {
+            "description": "Tableau de bord IoT industriel pour la surveillance des équipements miniers en temps réel",
+            "longDescription": "Un tableau de bord IoT de qualité industrielle pour surveiller les équipements et les opérations minières en temps réel. Fournit des informations critiques sur l'état des équipements, les mesures de production, les alertes de sécurité et des recommandations de maintenance prédictive.",
+            "role": "Développeur Full Stack",
+            "challenges": [
+                "Traitement des données de capteurs à haute fréquence provenant de plus de 100 appareils",
+                "Garantir la fiabilité du système dans des environnements industriels difficiles",
+                "Création d'alertes exploitables à partir de modèles de données complexes"
+            ],
+            "outcomes": [
+                "Réduction des temps d'arrêt des équipements de 35 %",
+                "Amélioration du temps de réponse aux incidents de sécurité de 50 %",
+                "Économie de 2 millions de dollars par an en frais de maintenance"
+            ]
         }
     },
     "ContactModal": {
