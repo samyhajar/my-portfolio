@@ -8,7 +8,13 @@
         "projects": "Projekte",
         "about": "Über mich",
         "contact": "Kontakt",
-        "bookCall": "Termin buchen"
+        "bookCall": "Termin buchen",
+        "liveVisitors": {
+            "label": "Live-Besucher",
+            "count": "{count, plural, one {# Person ist gerade hier} other {# Personen sind gerade hier}}",
+            "loading": "Prüfe, wer gerade hier ist...",
+            "unavailable": "Live-Zähler derzeit nicht verfügbar"
+        }
     },
     "Hero": {
         "title": "Samy Hajar",
@@ -21,7 +27,13 @@
             "Die Zukunft"
         ],
         "description": "Ich verwandle komplexe Probleme in elegante Lösungen durch visuelles Design, Rapid Prototyping und Interaktionsfähigkeiten.",
-        "viewProjects": "Projekte ansehen"
+        "viewProjects": "Projekte ansehen",
+        "liveVisitors": {
+            "label": "Live-Besucher",
+            "count": "{count, plural, one {# Person ist gerade hier} other {# Personen sind gerade hier}}",
+            "loading": "Prüfe, wer gerade hier ist...",
+            "unavailable": "Live-Zähler derzeit nicht verfügbar"
+        }
     },
     "ProjectDetail": {
         "back": "Zurück zu den Projekten",
@@ -156,7 +168,30 @@
     "Footer": {
         "about": "Full Stack Entwickler mit Leidenschaft für die Erstellung außergewöhnlicher digitaler Erlebnisse.",
         "quickLinks": "Quick Links",
+        "explore": "Mehr",
         "connect": "Verbinden",
+        "projects": "Projekte",
+        "resume": "Lebenslauf",
+        "privacy": "Datenschutz",
+        "imprint": "Impressum",
+        "cookieSettings": "Cookie-Einstellungen",
+        "email": "E-Mail",
         "rights": "Alle Rechte vorbehalten."
+    },
+    "CookieConsent": {
+        "title": "Cookie-Einstellungen",
+        "description": "Dieses Portfolio kann optional einen Live-Besucherzähler anzeigen. Diese Funktion verwendet ein Cookie und einen Realtime-Dienst und bleibt deaktiviert, bis Sie zustimmen.",
+        "details": "Standardmäßig bleiben nur notwendige Speicherungen aktiv. Sie können diese Entscheidung später jederzeit im Footer ändern.",
+        "accept": "Zähler erlauben",
+        "reject": "Nur notwendige",
+        "privacy": "Datenschutz",
+        "openSettings": "Cookie-Einstellungen öffnen"
+    },
+    "Resume": {
+        "eyebrow": "Lebenslauf",
+        "title": "Lebenslauf von Samy Hajar",
+        "description": "Sehen Sie sich den Lebenslauf direkt im Browser an, ohne das Portfolio-Erlebnis zu verlassen.",
+        "openPdf": "PDF öffnen",
+        "fallback": "Ihr Browser kann die eingebettete PDF-Vorschau nicht anzeigen. Verwenden Sie die Schaltfläche unten, um den Lebenslauf direkt zu öffnen."
     }
 }

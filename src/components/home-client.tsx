@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { Project } from "@/data/projects";
 import { ContactModal } from "@/components/ui/contact-modal";
 import { Button } from "@/components/ui/button";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const HeroDynamic = dynamic(() => import("@/components/sections/hero").then(mod => mod.Hero), { ssr: true });
 const FeaturedProjectsDynamic = dynamic(() => import("@/components/sections/featured-projects").then(mod => mod.FeaturedProjects), { ssr: false });
@@ -12,6 +12,8 @@ const TechGlobeDynamic = dynamic(() => import("@/components/ui/tech-globe").then
 
 export function HomeClient({ featuredProjects }: { featuredProjects: Project[] }) {
     const t = useTranslations("Contact");
+    const locale = useLocale();
+    const resumePath = `/${locale}/resume`;
 
     return (
         <>
@@ -42,7 +44,7 @@ export function HomeClient({ featuredProjects }: { featuredProjects: Project[] }
                             </Button>
                         </ContactModal>
                         <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-                            <a href="/resume.pdf" download>
+                            <a href={resumePath} target="_blank" rel="noopener noreferrer">
                                 {t("downloadResume")}
                             </a>
                         </Button>
@@ -52,4 +54,3 @@ export function HomeClient({ featuredProjects }: { featuredProjects: Project[] }
         </>
     );
 }
-

@@ -1,11 +1,9 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import { GooeyText } from "@/components/ui/gooey-text-morphing";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { useLenis } from "@/components/smooth-scroll";
 import { useTranslations } from "next-intl";
 

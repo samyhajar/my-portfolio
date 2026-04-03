@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useMemo, useState } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Calendar, Mail, Check, Copy, ArrowLeft } from "lucide-react";
@@ -14,18 +14,14 @@ export function ContactModal({ children }: { children: React.ReactNode }) {
     const [showCalendly, setShowCalendly] = useState(false);
     const email = "samy.hajar@gmail.com";
     const { resolvedTheme } = useTheme();
-    const [calendlyUrl, setCalendlyUrl] = useState("");
     const t = useTranslations("ContactModal");
-
-    useEffect(() => {
+    const calendlyUrl = useMemo(() => {
         const theme = resolvedTheme === "dark" ? "dark" : "light";
         const backgroundColor = theme === "dark" ? "171717" : "ffffff";
         const textColor = theme === "dark" ? "ffffff" : "171717";
         const primaryColor = "a855f7";
 
-        setCalendlyUrl(
-            `https://calendly.com/samy-hajar/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=${backgroundColor}&text_color=${textColor}&primary_color=${primaryColor}`
-        );
+        return `https://calendly.com/samy-hajar/30min?hide_event_type_details=1&background_color=${backgroundColor}&text_color=${textColor}&primary_color=${primaryColor}`;
     }, [resolvedTheme]);
 
     const handleCopyEmail = () => {

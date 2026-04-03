@@ -8,7 +8,13 @@
         "projects": "Projets",
         "about": "À propos",
         "contact": "Contact",
-        "bookCall": "Réserver un appel"
+        "bookCall": "Réserver un appel",
+        "liveVisitors": {
+            "label": "Visiteurs en direct",
+            "count": "{count, plural, one {# personne est ici maintenant} other {# personnes sont ici maintenant}}",
+            "loading": "Vérification des visiteurs...",
+            "unavailable": "Compteur en direct indisponible"
+        }
     },
     "Hero": {
         "title": "Samy Hajar",
@@ -21,7 +27,13 @@
             "le Futur"
         ],
         "description": "Je transforme des problèmes complexes en solutions élégantes grâce au design visuel, au prototypage rapide et aux compétences en interaction.",
-        "viewProjects": "Voir les projets"
+        "viewProjects": "Voir les projets",
+        "liveVisitors": {
+            "label": "Visiteurs en direct",
+            "count": "{count, plural, one {# personne est ici maintenant} other {# personnes sont ici maintenant}}",
+            "loading": "Vérification des visiteurs...",
+            "unavailable": "Compteur en direct indisponible"
+        }
     },
     "ProjectDetail": {
         "back": "Retour aux projets",
@@ -156,7 +168,30 @@
     "Footer": {
         "about": "Développeur Full Stack passionné par la création d'expériences numériques exceptionnelles.",
         "quickLinks": "Liens rapides",
+        "explore": "Explorer",
         "connect": "Connecter",
+        "projects": "Projets",
+        "resume": "CV",
+        "privacy": "Confidentialité",
+        "imprint": "Mentions légales",
+        "cookieSettings": "Paramètres des cookies",
+        "email": "E-mail",
         "rights": "Tous droits réservés."
+    },
+    "CookieConsent": {
+        "title": "Préférences des cookies",
+        "description": "Ce portfolio peut afficher en option un compteur de visiteurs en direct. Cette fonction utilise un cookie et un service temps réel et reste désactivée tant que vous ne l'autorisez pas.",
+        "details": "Seul le stockage nécessaire reste actif par défaut. Vous pourrez modifier ce choix plus tard depuis le pied de page.",
+        "accept": "Autoriser le compteur",
+        "reject": "Uniquement nécessaire",
+        "privacy": "Politique de confidentialité",
+        "openSettings": "Ouvrir les paramètres des cookies"
+    },
+    "Resume": {
+        "eyebrow": "CV",
+        "title": "CV de Samy Hajar",
+        "description": "Consultez le CV directement dans le navigateur sans quitter l'expérience du portfolio.",
+        "openPdf": "Ouvrir le PDF",
+        "fallback": "Votre navigateur ne peut pas afficher l'aperçu PDF intégré. Utilisez le bouton ci-dessous pour ouvrir directement le CV."
     }
 }

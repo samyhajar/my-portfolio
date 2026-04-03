@@ -10,9 +10,12 @@ import { ContactModal } from "@/components/ui/contact-modal";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { useTranslations } from "next-intl";
 import { LanguageSwitcher } from "./language-switcher";
+import { usePathname, Link as IntlLink } from "@/i18n/routing";
+import { LiveVisitorCounter } from "@/components/live-visitor-counter";
 
 export function Navigation() {
     const t = useTranslations("Navigation");
+    const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("home");
     const [isScrolled, setIsScrolled] = useState(false);
@@ -147,16 +150,19 @@ export function Navigation() {
                                     className="relative"
                                 >
                                     <a
-                                        href={link.href}
+                                        href={pathname === "/" ? link.href : `/${link.href}`}
                                         className={`relative px-5 lg:px-6 py-2.5 lg:py-3 text-sm lg:text-base font-medium rounded-full transition-all duration-200 block ${activeSection === link.id
                                             ? "text-white"
                                             : "text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white"
                                             }`}
                                         onClick={(e) => {
-                                            e.preventDefault();
-                                            const element = document.getElementById(link.id);
-                                            if (element) {
-                                                lenis?.scrollTo(`#${link.id}`, { offset: -80 });
+                                            // Only prevent default and scroll if we are already on the home page
+                                            if (pathname === "/") {
+                                                e.preventDefault();
+                                                const element = document.getElementById(link.id);
+                                                if (element) {
+                                                    lenis?.scrollTo(`#${link.id}`, { offset: -80 });
+                                                }
                                             }
                                         }}
                                     >
@@ -186,7 +192,8 @@ export function Navigation() {
                     {/* CTA and Mobile Toggle - Column 3 */}
                     <div className="flex items-center justify-end gap-2 sm:gap-4">
                         {/* Language Switcher */}
-                        <div className="hidden sm:block">
+                        <div className="hidden sm:flex items-center gap-2">
+                            <LiveVisitorCounter variant="header" />
                             <LanguageSwitcher />
                         </div>
 
@@ -212,6 +219,7 @@ export function Navigation() {
                         </motion.div>
 
                         <div className="sm:hidden flex items-center gap-2">
+                            <LiveVisitorCounter variant="header" />
                             <LanguageSwitcher />
                             <ThemeToggle />
                         </div>
@@ -269,7 +277,9 @@ export function Navigation() {
                                     }`}
                                 onClick={() => {
                                     setIsOpen(false);
-                                    lenis?.scrollTo(`#${link.id}`, { offset: -80 });
+                                    if (pathname === "/") {
+                                        lenis?.scrollTo(`#${link.id}`, { offset: -80 });
+                                    }
                                 }}
                             >
                                 {link.label}

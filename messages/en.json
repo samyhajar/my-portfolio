@@ -8,7 +8,13 @@
         "projects": "Projects",
         "about": "About",
         "contact": "Contact",
-        "bookCall": "Book a Call"
+        "bookCall": "Book a Call",
+        "liveVisitors": {
+            "label": "Live visitors",
+            "count": "{count, plural, one {# person is here right now} other {# people are here right now}}",
+            "loading": "Checking who is here...",
+            "unavailable": "Live counter unavailable"
+        }
     },
     "Hero": {
         "title": "Samy Hajar",
@@ -21,7 +27,13 @@
             "The Future"
         ],
         "description": "I transform thorny problems into elegant solutions using visual design, rapid prototyping, and interaction skills.",
-        "viewProjects": "View Projects"
+        "viewProjects": "View Projects",
+        "liveVisitors": {
+            "label": "Live visitors",
+            "count": "{count, plural, one {# person is here right now} other {# people are here right now}}",
+            "loading": "Checking who is here...",
+            "unavailable": "Live counter unavailable"
+        }
     },
     "ProjectDetail": {
         "back": "Back to Projects",
@@ -156,7 +168,30 @@
     "Footer": {
         "about": "Full Stack Developer passionate about creating exceptional digital experiences.",
         "quickLinks": "Quick Links",
+        "explore": "Explore",
         "connect": "Connect",
+        "projects": "Projects",
+        "resume": "Resume",
+        "privacy": "Privacy Policy",
+        "imprint": "Imprint",
+        "cookieSettings": "Cookie settings",
+        "email": "Email",
         "rights": "All rights reserved."
+    },
+    "CookieConsent": {
+        "title": "Cookie Preferences",
+        "description": "This portfolio can optionally show a live visitor counter. That feature uses a cookie and a realtime service and stays off until you allow it.",
+        "details": "Only necessary storage stays active by default. You can change this choice later from the footer.",
+        "accept": "Allow counter",
+        "reject": "Only necessary",
+        "privacy": "Privacy policy",
+        "openSettings": "Open cookie settings"
+    },
+    "Resume": {
+        "eyebrow": "Resume",
+        "title": "Samy Hajar Resume",
+        "description": "View the resume directly in the browser without leaving the portfolio experience.",
+        "openPdf": "Open PDF",
+        "fallback": "Your browser cannot render the embedded PDF preview. Use the button below to open the resume directly."
     }
 }
